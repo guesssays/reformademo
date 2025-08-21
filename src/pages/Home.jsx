@@ -187,7 +187,7 @@ export default function Home(){
     {/* Фото */}
     <div className="order-1 md:order-2">
       <img
-        src="/images/info-1.svg"
+        src="/images/infoblock1.png"
         alt="Фитнес зал ReForma"
         className="rounded-xl w-full h-auto"
       />
