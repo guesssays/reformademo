@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ====== Fonts ====== */
+@font-face{ font-family:"BebasNeueCyrillic"; src:url("/fonts/bebasneuecyrillic.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face{ font-family:"HelveticaNeueCond"; src:url("/fonts/Helvetica-Neue Cond.ttf") format("truetype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face{ font-family:"HelveticaNeueCondBold"; src:url("/fonts/Helvetica-Neue Cond Bold.ttf") format("truetype"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Xolonium"; src:url("/fonts/Xolonium-Regular.otf") format("opentype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Xolonium"; src:url("/fonts/Xolonium-Bold.otf") format("opentype"); font-weight:700; font-style:normal; font-display:swap; }
+
+/* ====== Base ====== */
+:root{ --header-h: 72px; }  /* верни нормальную высоту */
+
+
+html, body{ margin:0; padding:0; width:100%; overflow-x:hidden; @apply bg-paper text-ink; }
+
+/* Layout */
+.bleed{ @apply w-full; }                      /* фон секции на всю ширину */
+.wrapper{ @apply max-w-6xl mx-auto px-4; }   /* ограничение контента */
+.edge { @apply px-4 md:px-6 lg:px-10; }
+.narrow { @apply max-w-6xl mx-auto; }      /* только горизонтальные поля для hero */
+/* UI */
+.btn{ 
+  @apply inline-flex items-center justify-center gap-2 rounded-[20px] px-5 py-3 font-helvCondBold tracking-wide transition; 
+}
+.btn--accent{ 
+  @apply bg-scarlet text-paper hover:bg-crimson; 
+}
+.btn--outline{ 
+  @apply border border-ink/15 text-ink hover:bg-grayx/30; 
+}
+.badge{ 
+  @apply inline-flex items-center rounded-[20px] border border-ink/15 bg-paper/80 px-3 py-1 text-xs uppercase tracking-wide; 
+}
+.card{ 
+  @apply bg-paper rounded-xl shadow-card overflow-hidden; 
+}
+
+/* Typography */
+.h-title{ @apply font-bebas text-[38px] leading-[1.05] md:text-[44px]; }
+.h-sub{ @apply font-helvCondBold text-xl; }
+.h-num{ @apply font-xolo font-bold text-[42px] text-scarlet leading-none; }
+
+/* ---------- header utils ---------- */
+.nav-a{ @apply hover:text-scarlet transition; }
+
+/* кружки соцсетей */
+.icon-btn{
+  @apply inline-flex items-center justify-center h-9 w-9 rounded-full border border-ink/25 
+         text-ink/80 hover:text-scarlet hover:border-scarlet transition;
+}
+
+/* выпадающие панели */
+.menu-panel{
+  background-color: rgba(245,243,244,.98);
+  @apply shadow-card rounded-xl border border-ink/10 transform transition z-50;
+}
+
+
+/* пункт в панели */
+.menu-item{
+  @apply block px-3 py-2 rounded-md hover:bg-grayx/40 font-helvCond text-[14px];
+}
+
+/* кнопка "Расписание" — как на референсе */
+.schedule-btn{
+  @apply inline-flex items-center justify-center px-5 py-2 rounded-full 
+         uppercase tracking-wide bg-paper text-ink border-2 border-ink;
+}
+.schedule-btn:hover{ @apply bg-ink text-paper; }
+/* равномерные отступы между секциями */
+.section{
+  /* было: @apply py-10 md:py-14; — оставляло мало места на десктопе */
+  @apply py-8 md:py-12;  /* ~32–48px сверху и снизу */
+}
+/* плотный верхний отступ для HERO + небольшой отступ снизу */
+.hero-tight{ @apply pt-3 md:pt-4 mb-6 md:mb-8; }
+/* высота фиксированного header */
+:root {
+  --header-h: 64px; /* подгони под твой реальный header */
+}
+
+body {
+  padding-top: var(--header-h);
+}
+/* добавим базовый отступ для содержимого */
+.page-content {
+  padding-top: 12px; /* высота хедера + небольшой запас */
+}
+/* ---------- header utils ---------- */
+.nav-a{ 
+  @apply transition;
+  color: #161A1D; /* цвет для ссылок навигации */
+}
+.nav-a:hover{ 
+  @apply text-scarlet; 
+}
+
+/* кнопка "Расписание" — как на референсе */
+.schedule-btn{
+  @apply inline-flex items-center justify-center px-5 py-2 rounded-[20px] 
+         uppercase tracking-wide border-2;
+
+  color: #161A1D;               /* текст белый для контраста */
+  border-color: #161A1D;     /* обводка совпадает с фоном */
+}
+.schedule-btn:hover{ 
+  background-color: #fff; 
+  color: #161A1D; 
+}
+.section--bleed {
+  @apply w-full max-w-none px-0; /* убираем wrapper-ограничения */
+}
