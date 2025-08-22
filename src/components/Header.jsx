@@ -4,9 +4,11 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 /* ссылки "О нас", "Контакты" должны работать с любой страницы */
 const moreLinks = [
-  { title: "О нас", href: "/#about" },
-  { title: "Контакты", href: "/#contacts" },
+
+  { title: "Массаж", href: "/massage" },   // 🔴 добавили
+ { title: "О компании", href: "/about" },
 ];
+
 
 /* безопасный href на страницу направления — доступен всем компонентам файла */
 const dirHref = (d) =>
@@ -345,37 +347,50 @@ function MobilePanel({ open, onClose }) {
           </a>
         </div>
 
-        {/* Действия: звонок + выпадающий список РАСПИСАНИЕ */}
-        <div className="mt-4 flex flex-col gap-3">
-          <a href="tel:+998933775697" className="inline-flex items-center justify-center rounded-full bg-scarlet text-white px-5 py-2 font-bebas tracking-wide hover:bg-crimson">
-            Позвонить
-          </a>
+{/* Действия: пробное + звонок + выпадающий список РАСПИСАНИЕ */}
+<div className="mt-4 flex flex-col gap-3">
+  <button
+    onClick={() => {
+      window.dispatchEvent(new CustomEvent("open-trial-modal"));
+      onClose?.();
+    }}
+    className="inline-flex items-center justify-center rounded-full bg-scarlet text-white px-5 py-2 font-bebas tracking-wide hover:bg-scarlet/90"
+  >
+    Записаться на пробное занятие
+  </button>
 
-          <button
-            onClick={() => setSchedOpen(v => !v)}
-            className="inline-flex items-center justify-center rounded-full border border-ink/20 text-ink px-5 py-2 font-helvCond hover:bg-ink/5"
+  <a
+    href="tel:+998933775697"
+    className="inline-flex items-center justify-center rounded-full border border-ink/20 text-ink px-5 py-2 font-bebas tracking-wide hover:bg-ink/5"
+  >
+    Позвонить
+  </a>
+
+  <button
+    onClick={() => setSchedOpen(v => !v)}
+    className="inline-flex items-center justify-center rounded-full border border-ink/20 text-ink px-5 py-2 font-helvCond hover:bg-ink/5"
+  >
+    Расписание
+    <ChevronDown className={`ml-2 h-4 w-4 transition ${schedOpen ? "rotate-180" : ""}`} />
+  </button>
+
+  <div className={`overflow-hidden transition-all duration-300 ${schedOpen ? "max-h-[400px] mt-2" : "max-h-0"}`}>
+    <ul className="rounded-xl border border-ink/10 divide-y divide-ink/10 bg-white">
+      {studios.map((s, i) => (
+        <li key={i}>
+          <a
+            href={`/studios/${s.id}#schedule`}
+            className="block px-4 py-3 hover:bg-ink/5"
+            onClick={onClose}
           >
-            Расписание
-            <ChevronDown className={`ml-2 h-4 w-4 transition ${schedOpen ? "rotate-180" : ""}`} />
-          </button>
-
-        <div className={`overflow-hidden transition-all duration-300 ${schedOpen ? "max-h-[400px] mt-2" : "max-h-0"}`}>
-  <ul className="rounded-xl border border-ink/10 divide-y divide-ink/10 bg-white">
-    {studios.map((s, i) => (
-      <li key={i}>
-        <a
-          href={`/studios/${s.id}#schedule`}
-          className="block px-4 py-3 hover:bg-ink/5"
-          onClick={onClose}
-        >
-          {s.title}
-        </a>
-      </li>
-    ))}
-  </ul>
+            {s.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </div>
 
-        </div>
       </div>
     </div>
   );

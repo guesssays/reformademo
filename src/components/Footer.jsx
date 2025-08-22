@@ -1,5 +1,13 @@
+// src/components/Footer.jsx
 import { Instagram, Facebook, Send } from "lucide-react";
 import { directions, studios } from "../data/homeData";
+
+// тот же безопасный генератор href для направления, что и в Header
+const dirHref = (d) =>
+  `/directions/${
+    d.slug ||
+    encodeURIComponent(d.title.trim().toLowerCase().replace(/\s+/g, "-"))
+  }`;
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -35,36 +43,34 @@ export default function Footer() {
             <div className="text-base md:text-lg font-bebas text-white/60 mb-3">Меню:</div>
             <ul className="text-sm text-white/80 space-y-2">
               <li><a href="/" className="hover:text-scarlet">Главная</a></li>
-              <li><a href="#about" className="hover:text-scarlet">О нас</a></li>
-        
-              <li><a href="#massaj" className="hover:text-scarlet">Массаж</a></li>
+              <li><a href="/about" className="hover:text-scarlet">О компании</a></li>
+              <li><a href="/massage" className="hover:text-scarlet">Массаж</a></li>
+       
             </ul>
           </div>
 
-          {/* ===== COL 3 (динамические направления) ===== */}
-   {/* ===== COL 3 ===== */}
-<div>
-  <div className="text-base md:text-lg font-bebas text-white/60 mb-3">Направления:</div>
-  <ul className="text-sm text-white/80 space-y-2">
-    <li><a href="#directions" className="hover:text-scarlet">Фитнес микс</a></li>
-    <li><a href="#directions" className="hover:text-scarlet">Body fit</a></li>
-    <li><a href="#directions" className="hover:text-scarlet">Похудейка</a></li>
-    <li><a href="#directions" className="hover:text-scarlet">Йога</a></li>
-    <li><a href="#directions" className="hover:text-scarlet">Пилатес</a></li>
-    <li><a href="#directions" className="hover:text-scarlet">Стретчинг</a></li>
-    <li><a href="#directions" className="hover:text-scarlet">K-pop</a></li>
-  </ul>
-</div>
+          {/* ===== COL 3: Направления (динамически, ссылки на страницы направлений) ===== */}
+          <div>
+            <div className="text-base md:text-lg font-bebas text-white/60 mb-3">Направления:</div>
+            <ul className="text-sm text-white/80 space-y-2">
+              {directions.slice(0, 7).map((d, i) => (
+                <li key={i}>
+                  <a href={dirHref(d)} className="hover:text-scarlet">
+                    {d.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-
-          {/* ===== COL 4 (динамические студии) ===== */}
+          {/* ===== COL 4: Студии ===== */}
           <div className="space-y-6">
             <div>
               <div className="text-base md:text-lg font-bebas text-white/60 mb-3">Студии:</div>
               <ul className="text-sm text-white/80 space-y-2">
                 {studios.map((s, i) => (
                   <li key={i}>
-                    <a href={`/studios/${i + 1}`} className="hover:text-scarlet">
+                    <a href={`/studios/${s.id}`} className="hover:text-scarlet">
                       {s.title}
                     </a>
                   </li>

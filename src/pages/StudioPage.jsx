@@ -1,14 +1,21 @@
 // src/pages/StudioPage.jsx
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Section from "../components/Section.jsx";
 import { directions as allDirections, studios as studiosBase } from "../data/homeData.js";
 import { studiosPageData } from "../data/studiosPageData.js";
-
+import TrialModal from "../components/TrialModal.jsx"; // ← модалка
+import { useEffect } from "react";
 export default function StudioPage() {
   const { id } = useParams(); // st-aly | st-alm
   const base = studiosBase.find((s) => s.id === id);
   const data = studiosPageData[id];
+  const [modalOpen, setModalOpen] = useState(false); // ← состояние модалки
+  useEffect(() => {
+  const open = () => setModalOpen(true);
+  window.addEventListener("open-trial-modal", open);
+  return () => window.removeEventListener("open-trial-modal", open);
+}, []);
 
   if (!base || !data) {
     return (
@@ -25,77 +32,85 @@ export default function StudioPage() {
   }, [data]);
 
   const city = data?.info?.city || "ТАШКЕНТ";
-// соберём список бейджей из объекта направления
-const getBadges = (d) => {
-  if (Array.isArray(d.badges)) return d.badges.filter(Boolean);
-  if (d.badge) return [d.badge];
-  // сейчас в твоих данных есть только tag — используем его
-  return d.tag ? [d.tag] : [];
-};
+
+  // соберём список бейджей из объекта направления
+  const getBadges = (d) => {
+    if (Array.isArray(d.badges)) return d.badges.filter(Boolean);
+    if (d.badge) return [d.badge];
+    // сейчас в твоих данных есть только tag — используем его
+    return d.tag ? [d.tag] : [];
+  };
 
   return (
     <>
-{/* ========= HERO (контент опущен ниже на мобилках) ========= */}
-{/* ========= HERO ========= */}
-<section className="relative">
-  <div className="relative min-h-[78svh] sm:min-h-[82svh] md:min-h-[72vh]">
-    <img
-      src={data.heroImage || base.img}
-      alt=""
-      className="absolute inset-0 w-full h-full object-cover"
-    />
+      {/* ========= HERO ========= */}
+      <section className="relative">
+        <div className="relative min-h-[78svh] sm:min-h-[82svh] md:min-h-[72vh]">
+          <img
+            src={data.heroImage || base.img}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
 
-    {/* затемнение по всей картинке */}
-    <div className="absolute inset-0 bg-black/50" />
+          {/* затемнение по всей картинке */}
+          <div className="absolute inset-0 bg-black/50" />
+          {/* дополнительный градиент сверху */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
 
-    {/* дополнительный градиент сверху */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
+          <div className="edge relative z-10 h-full">
+            <div
+              className="h-full w-full max-w-[1200px] mx-auto
+                         flex flex-col items-center justify-center text-center gap-2
+                         px-6 md:px-10
+                         pb-14 sm:pb-20 md:pb-20
+                         translate-y-[14svh] sm:translate-y-[16svh] md:translate-y-[8svh]"
+            >
+              {/* хлебные крошки */}
+              <nav className="text-paper/80 text-xs md:text-sm font-helvCond mb-1">
+                <Link to="/" className="hover:underline">Главная</Link>
+                <span className="opacity-70 mx-2">/</span>
+                <span className="opacity-90">{data.titleHero}</span>
+              </nav>
 
-    <div className="edge relative z-10 h-full">
-      <div className="h-full w-full max-w-[1200px] mx-auto
-                      flex flex-col items-center justify-center text-center gap-2
-                      px-6 md:px-10
-                      pb-14 sm:pb-20 md:pb-20
-                      translate-y-[14svh] sm:translate-y-[16svh] md:translate-y-[8svh]">
+              <div className="uppercase text-paper/80 font-helvCond tracking-wide">
+                студия фитнеса
+              </div>
 
-        {/* хлебные крошки */}
-        <nav className="text-paper/80 text-xs md:text-sm font-helvCond mb-1">
-          <Link to="/" className="hover:underline">Главная</Link>
-          <span className="opacity-70 mx-2">/</span>
-          <span className="opacity-90">{data.titleHero}</span>
-        </nav>
+              <div
+                className="mt-1 font-xolo font-bold leading-none
+                           tracking-[-2px] sm:tracking-[-3px] md:tracking-[-5px]
+                           text-[52px] sm:text-[64px] md:text-[80px]"
+              >
+                <span className="text-scarlet">R</span>
+                <span className="text-white">e</span>
+                <span className="text-scarlet">F</span>
+                <span className="text-white">orma</span>
+              </div>
 
-        <div className="uppercase text-paper/80 font-helvCond tracking-wide">
-          студия фитнеса
+              <h1
+                className="mt-1 font-bebas text-white leading-[0.9] tracking-tight
+                           text-[52px] sm:text-[64px] md:text-[96px]"
+              >
+                {data.titleHero}
+              </h1>
+
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
+                className="mt-5 inline-block bg-scarlet hover:bg-scarlet/90 text-white
+                           font-bebas px-6 py-3 rounded-full text-lg md:text-xl"
+              >
+                ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ
+              </button>
+            </div>
+          </div>
         </div>
-
-        <div className="mt-1 font-xolo font-bold leading-none tracking-[-6px]
-                        text-[52px] sm:text-[64px] md:text-[80px]">
-          <span className="text-scarlet">R</span><span className="text-white">e</span>
-          <span className="text-scarlet">F</span><span className="text-white">orma</span>
-        </div>
-
-        <h1 className="mt-1 font-bebas text-white leading-[0.9] tracking-tight
-                       text-[52px] sm:text-[64px] md:text-[96px]">
-          {data.titleHero}
-        </h1>
-
-        <a href={data.ctaPhone}
-           className="mt-5 inline-block bg-scarlet hover:bg-scarlet/90 text-white
-                      font-bebas px-6 py-3 rounded-full text-lg md:text-xl">
-          ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+      </section>
 
       {/* ======= Карточка Адрес/График: налезает на hero и уже на 1/3 ======= */}
-  <Section className="bg-ink">
-  <div className="relative -mt-[14svh] sm:-mt-[16svh] md:-mt-32 lg:-mt-40 xl:-mt-48 z-20">
-    <div className="mx-auto w-[94%] md:w-2/3 lg:w-3/5">
+      <Section className="bg-ink">
+        <div className="relative -mt-[14svh] sm:-mt-[16svh] md:-mt-32 lg:-mt-40 xl:-mt-48 z-20">
+          <div className="mx-auto w-[94%] md:w-2/3 lg:w-3/5">
             <div className="bg-white rounded-[22px] p-4 md:p-6 lg:p-8 shadow-soft">
               <div className="grid md:grid-cols-[1.05fr,1fr] gap-6 items-stretch">
                 {/* Фото слева: явная высота/аспект + object-cover => кадрирование */}
@@ -134,12 +149,13 @@ const getBadges = (d) => {
                   </div>
 
                   <div className="mt-6">
-                    <a
-                      href={data.ctaPhone}
+                    <button
+                      type="button"
+                      onClick={() => setModalOpen(true)}
                       className="inline-block bg-scarlet hover:bg-scarlet/90 text-white font-bebas px-6 py-3 rounded-full text-lg"
                     >
                       {data.info.ctaText}
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -187,107 +203,102 @@ const getBadges = (d) => {
         </div>
       </Section>
 
-{/* ===== Направления: квадратные карточки, квадратные бейджи ===== */}
-{/* ===== Направления: квадратные карточки, большие бейджи/заголовки на десктопе ===== */}
-<Section className="bg-paper">
-  <h2 className="font-bebas text-[32px] md:text-[44px] leading-tight text-[#161A1D]">
-    {data.directionsTitle}
-  </h2>
+      {/* ===== Направления: квадратные карточки, большие бейджи/заголовки на десктопе ===== */}
+      <Section className="bg-paper">
+        <h2 className="font-bebas text-[32px] md:text-[44px] leading-tight text-[#161A1D]">
+          {data.directionsTitle}
+        </h2>
 
-  {/* 👉 теперь на lg и выше 5 колонок */}
-  <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-    {studioDirections.map((d, i) => (
-      <a
-        key={i}
-        href={`/directions/${d.slug || encodeURIComponent(d.title.trim().toLowerCase().replace(/\s+/g, "-"))}`}
-        className="relative block rounded-xl overflow-hidden group"
-      >
-        {/* фон/картинка */}
-        <img
-          src={d.img}
-          alt={d.title}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
+        {/* 👉 на lg и выше 5 колонок */}
+        <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+          {studioDirections.map((d, i) => (
+            <a
+              key={i}
+              href={`/directions/${d.slug || encodeURIComponent(d.title.trim().toLowerCase().replace(/\s+/g, "-"))}`}
+              className="relative block rounded-xl overflow-hidden group"
+            >
+              {/* фон/картинка */}
+              <img
+                src={d.img}
+                alt={d.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent" />
 
-        {/* бейджи */}
-        {getBadges(d).length > 0 && (
-          <div className="absolute left-2 top-2 flex gap-1 flex-wrap">
-            {getBadges(d).map((b, bi) => (
-              <span
-                key={bi}
-                className="bg-scarlet text-white font-bebas rounded-full shadow-md leading-none
-                           text-[11px] px-2 py-0.5
-                           md:text-[14px] md:px-3 md:py-1
-                           lg:text-[15px] lg:px-3.5 lg:py-1.5"
-              >
-                {String(b)}
-              </span>
-            ))}
-          </div>
-        )}
+              {/* бейджи */}
+              {getBadges(d).length > 0 && (
+                <div className="absolute left-2 top-2 flex gap-1 flex-wrap">
+                  {getBadges(d).map((b, bi) => (
+                    <span
+                      key={bi}
+                      className="bg-scarlet text-white font-bebas rounded-full shadow-md leading-none
+                                 text-[11px] px-2 py-0.5
+                                 md:text-[14px] md:px-3 md:py-1
+                                 lg:text-[15px] lg:px-3.5 lg:py-1.5"
+                    >
+                      {String(b)}
+                    </span>
+                  ))}
+                </div>
+              )}
 
-        {/* название */}
-        <div className="absolute bottom-2 left-2 right-2">
-          <div className="font-bebas text-white leading-none drop-shadow
-                          text-lg md:text-xl lg:text-2xl">
-            {d.title}
+              {/* название */}
+              <div className="absolute bottom-2 left-2 right-2">
+                <div className="font-bebas text-white leading-none drop-shadow text-lg md:text-xl lg:text-2xl">
+                  {d.title}
+                </div>
+              </div>
+
+              {/* компактный аспект */}
+              <div className="pb-[85%]" />
+            </a>
+          ))}
+        </div>
+      </Section>
+
+      {/* ===== CTA (больше шрифты) ===== */}
+      <Section className="bg-paper">
+        <div className="relative rounded-2xl overflow-hidden shadow-soft">
+          <img
+            src={data.cta.image}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent" />
+
+          <div className="relative z-10 flex items-center h-[360px] sm:h-[440px] md:h-[520px] lg:h-[580px]">
+            <div className="px-7 md:px-12 lg:px-14 w-full">
+              <div className="max-w-[720px]">
+                <h3
+                  className="font-bebas text-white leading-[0.9] tracking-tight
+                             text-[40px] sm:text-[56px] md:text-[72px] lg:text-[84px]"
+                >
+                  НЕ ЗНАЕШЬ, КАКОЕ<br />НАПРАВЛЕНИЕ ВЫБРАТЬ?
+                </h3>
+
+                <p
+                  className="mt-5 text-white/90 font-helvCond leading-relaxed
+                             text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px]"
+                >
+                  {data.cta.text}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => setModalOpen(true)}
+                  className="mt-7 inline-flex items-center justify-center
+                             rounded-full bg-scarlet hover:bg-scarlet/90
+                             text-white font-bebas tracking-wide
+                             text-[18px] sm:text-[19px] md:text-[20px]
+                             px-6 py-3.5 md:px-8 md:py-4 shadow-md"
+                >
+                  {data.cta.button}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* квадратный аспект заменён на более компактный */}
-        <div className="pb-[85%]" />
-      </a>
-    ))}
-  </div>
-</Section>
-
-
-
-
-
-{/* ===== CTA (full-bleed card with overlay) ===== */}
-{/* ===== CTA (больше шрифты) ===== */}
-<Section className="bg-paper">
-  <div className="relative rounded-2xl overflow-hidden shadow-soft">
-    <img
-      src={data.cta.image}
-      alt=""
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent" />
-
-    <div className="relative z-10 flex items-center h-[360px] sm:h-[440px] md:h-[520px] lg:h-[580px]">
-      <div className="px-7 md:px-12 lg:px-14 w-full">
-        <div className="max-w-[720px]">
-          <h3 className="font-bebas text-white leading-[0.9] tracking-tight
-                         text-[40px] sm:text-[56px] md:text-[72px] lg:text-[84px]">
-            НЕ ЗНАЕШЬ, КАКОЕ<br />НАПРАВЛЕНИЕ ВЫБРАТЬ?
-          </h3>
-
-          <p className="mt-5 text-white/90 font-helvCond leading-relaxed
-                        text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px]">
-            {data.cta.text}
-          </p>
-
-          <a
-            href={data.ctaPhone}
-            className="mt-7 inline-flex items-center justify-center
-                       rounded-full bg-scarlet hover:bg-scarlet/90
-                       text-white font-bebas tracking-wide
-                       text-[18px] sm:text-[19px] md:text-[20px]
-                       px-6 py-3.5 md:px-8 md:py-4 shadow-md"
-          >
-            {data.cta.button}
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</Section>
-
-
-
+      </Section>
 
       {/* ===== Расписание ===== */}
       <Section className="bg-paper">
@@ -311,6 +322,9 @@ const getBadges = (d) => {
           ))}
         </div>
       </Section>
+
+      {/* ===== сама модалка ===== */}
+      <TrialModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
 }

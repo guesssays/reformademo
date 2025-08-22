@@ -5,7 +5,9 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import Direction from "./pages/Direction.jsx";
-import StudioPage from "./pages/StudioPage.jsx"; // <- НОВОЕ
+import StudioPage from "./pages/StudioPage.jsx";
+import MassagePage from "./pages/MassagePage.jsx";
+import AboutPage from "./pages/AboutPage.jsx"; // ← НОВОЕ
 
 function Layout() {
   return (
@@ -26,16 +28,14 @@ function HashAndTopScroller() {
   const location = useLocation();
 
   useEffect(() => {
-    // сначала скроллим к началу при смене pathname
-    window.scrollTo({ top: 0, behavior: "instant" });
-    // затем, если есть хеш — плавно к нужной секции
+    window.scrollTo({ top: 0, behavior: "auto" });
+
     if (location.hash) {
       const id = decodeURIComponent(location.hash.replace("#", ""));
-      // небольшой timeout, чтобы DOM успел отрендериться
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 0);
+      });
     }
   }, [location.pathname, location.hash]);
 
@@ -64,6 +64,12 @@ export default function App() {
 
           {/* Страницы студий */}
           <Route path="studios/:id" element={<StudioPage />} />
+
+          {/* Страница массажа */}
+          <Route path="massage" element={<MassagePage />} />
+
+          {/* Страница «О компании» */}
+          <Route path="about" element={<AboutPage />} />
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />
