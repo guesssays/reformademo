@@ -52,49 +52,52 @@ export const why = [
 ];
 
 export const directions = [
-  // 🔹 MOVEMENT
-  { tag: "MOVEMENT", title: "Фитнес микс", img: "/images/directions/fitness-mix.png" },
-  { tag: "MOVEMENT", title: "Фитнес + пилатес", img: "/images/directions/fitness-pilates.png" },
-  { tag: "MOVEMENT", title: "Body fit", img: "/images/directions/body-fit.png" },
-  { tag: "MOVEMENT", title: "Похудейка", img: "/images/directions/weightloss.png" },
-  { tag: "MOVEMENT", title: "Тверк", img: "/images/directions/twerk.png" },
-  { tag: "MOVEMENT", title: "Фитнес на батутах", img: "/images/directions/trampoline.png" },
-  { tag: "MOVEMENT", title: "Фитнес + стретчинг", img: "/images/directions/fitness-stretch.png" },
-  { tag: "MOVEMENT", title: "K-pop", img: "/images/directions/kpop.png" },
-  { tag: "MOVEMENT", title: "Арабские танцы + фитнес", img: "/images/directions/arabic-dance-fitness.png" },
+  // MOVEMENT
+  { slug: "fitness-mix",            tag: "MOVEMENT", title: "Фитнес микс",                    img: "/images/directions/fitness-mix.png" },
+  { slug: "fitness-pilates",        tag: "MOVEMENT", title: "Фитнес + пилатес",               img: "/images/directions/fitness-pilates.png" },
+  { slug: "body-fit",               tag: "MOVEMENT", title: "Body fit",                       img: "/images/directions/body-fit.png" },
+  { slug: "weightloss",             tag: "MOVEMENT", title: "Похудейка",                      img: "/images/directions/weightloss.png" },
+  { slug: "twerk",                  tag: "MOVEMENT", title: "Тверк",                          img: "/images/directions/twerk.png" },
+  { slug: "trampoline-fitness",     tag: "MOVEMENT", title: "Фитнес на батутах",              img: "/images/directions/trampoline.png" },
+  { slug: "fitness-stretching",     tag: "MOVEMENT", title: "Фитнес + стретчинг",             img: "/images/directions/fitness-stretch.png" },
+  { slug: "k-pop",                  tag: "MOVEMENT", title: "K-pop",                          img: "/images/directions/kpop.png" },
+  { slug: "arabic-dance-fitness",   tag: "MOVEMENT", title: "Арабские танцы + фитнес",        img: "/images/directions/arabic-dance-fitness.png" },
 
-  // 🔹 MINDSET
-  { tag: "MINDSET", title: "Йога", img: "/images/directions/yoga.png" },
-  { tag: "MINDSET", title: "Йога для беременных", img: "/images/directions/yoga-pregnant.png" },
-  { tag: "MINDSET", title: "Женская йога", img: "/images/directions/yoga-women.png" },
+  // MINDSET
+  { slug: "yoga",            tag: "MINDSET", title: "Йога",                 img: "/images/directions/yoga.png" },
+  { slug: "yoga-pregnant",   tag: "MINDSET", title: "Йога для беременных",  img: "/images/directions/yoga-pregnant.png" },
+  { slug: "yoga-women",      tag: "MINDSET", title: "Женская йога",         img: "/images/directions/yoga-women.png" },
 
-  // 🔹 RECOVERY
-  { tag: "RECOVERY", title: "Пилатес", img: "/images/directions/pilates.png" },
-  { tag: "RECOVERY", title: "Пилатес + стретчинг", img: "/images/directions/pilates-stretch.png" },
-  { tag: "RECOVERY", title: "Стретчинг", img: "/images/directions/stretch.png" },
-  { tag: "RECOVERY", title: "Йогатерапия", img: "/images/directions/yoga-therapy.png" },
-  { tag: "RECOVERY", title: "Аэройога", img: "/images/directions/aero-yoga.png" },
-  { tag: "RECOVERY", title: "Женское здоровье", img: "/images/directions/women-health.png" },
-  { tag: "RECOVERY", title: "Аэростретчинг", img: "/images/directions/aero-stretch.png" },
+  // RECOVERY
+  { slug: "pilates",              tag: "RECOVERY", title: "Пилатес",               img: "/images/directions/pilates.png" },
+  { slug: "pilates-stretching",   tag: "RECOVERY", title: "Пилатес + стретчинг",   img: "/images/directions/pilates-stretch.png" },
+  { slug: "stretching",           tag: "RECOVERY", title: "Стретчинг",             img: "/images/directions/stretch.png" },
+  { slug: "yoga-therapy",         tag: "RECOVERY", title: "Йогатерапия",           img: "/images/directions/yoga-therapy.png" },
+  { slug: "aerial-yoga",          tag: "RECOVERY", title: "Аэройога",              img: "/images/directions/aero-yoga.png" },
+  { slug: "women-health",         tag: "RECOVERY", title: "Женское здоровье",      img: "/images/directions/women-health.png" },
+  { slug: "aerial-stretching",    tag: "RECOVERY", title: "Аэростретчинг",         img: "/images/directions/aero-stretch.png" },
 ];
 
 
 
 
 export const studios = [
-  { 
-    short: "АЛАЙСКИЙ", 
-    title: "Юнусабадский район, Ц2, проезд Олой Бозори 59/3", 
-    phone: "+998933775697", 
-    img: "/images/st-1.jpg" 
+  {
+    id: "st-aly",
+    short: "АЛМАЗАР",
+    title: "Юнусабадский район, Ц2, проезд Олой бозори 59/3",
+    phone: "+998933775697",
+    img: "/images/st-1.jpg"
   },
-  { 
-    short: "АЛИМКЕНТ", 
-    title: "Яшнабадский район, улица Алимкент 33", 
-    phone: "+998933775697", 
-    img: "/images/st-2.jpg" 
-  },
-];
+  {
+    id: "st-alm",
+    short: "АЛИМКЕНТ",
+    title: "Яшнабадский район, улица Алимкент 33",
+    phone: "+998933775697",
+    img: "/images/st-2.jpg"
+  }
+]
+
 export const reviews = [
   { img: "/images/reviews/rev-1.jpg" },
   { img: "/images/reviews/rev-2.jpg" },

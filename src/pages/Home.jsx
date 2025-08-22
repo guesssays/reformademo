@@ -77,12 +77,21 @@ export default function Home(){
 <div className="absolute inset-0 bg-ink/60" />
           <div className="relative z-10 p-6 md:p-10 flex flex-col items-center">
 {/* логотип */}
-<h1 className="font-xolo font-bold text-[80px] md:text-[100px] leading-none tracking-[-8px] mb-4">
+<h1
+  className="
+    font-xolo font-bold
+    text-[64px] sm:text-[80px] md:text-[100px]
+    leading-none
+    tracking-[-4px] sm:tracking-[-6px] md:tracking-[-8px]
+    mb-4
+  "
+>
   <span className="text-scarlet">R</span>
   <span className="text-paper">e</span>
   <span className="text-scarlet">F</span>
   <span className="text-paper">orma</span>
 </h1>
+
      {/* подзаголовок */}
 <p className="text-paper/90 font-bebas max-w-2xl text-lg tracking-wide mb-3">
   Уютные студии, женская атмосфера и программы тренировок для любого уровня.
@@ -304,10 +313,7 @@ export default function Home(){
 
       {directions.map((d, i) => (
        <SwiperSlide key={i} style={{ width: 360 }}> {/* ещё +20px шире */}
-  <a
-    href={`#direction-${i}`}
-    className="relative block aspect-square rounded-2xl overflow-hidden group"
-  >
+<a href={`/directions/${d.slug}`} className="relative block aspect-square rounded-2xl overflow-hidden group">
     {/* Фон — фото */}
     <img
       src={d.img}
@@ -342,11 +348,10 @@ export default function Home(){
   </div>
 </Section>
 
-
 {/* СТУДИИ */}
 <Section id="studios" className="bg-paper">
   {/* Заголовок */}
- <h2 className="font-bebas leading-none text-[#161A1D] text-[42px] md:text-[64px]">
+  <h2 className="font-bebas leading-none text-[#161A1D] text-[42px] md:text-[64px]">
     ВЫБЕРИ СВОЮ СТУДИЮ{" "}
     <span>
       <span className="text-scarlet">R</span>E
@@ -359,7 +364,7 @@ export default function Home(){
     {studios.map((s, i) => (
       <a
         key={i}
-        href={`tel:${s.phone}`}
+        href={`/studios/${s.id}`}   // 👉 ссылка теперь на страницу студии
         className="relative block rounded-2xl overflow-hidden group"
       >
         {/* Фон */}
@@ -385,7 +390,9 @@ export default function Home(){
           </div>
           <div className="flex items-center gap-2 text-white/90 text-base drop-shadow">
             <Phone size={18} className="text-scarlet" />
-            {s.phone}
+            <a href={`tel:${s.phone}`} className="hover:underline">
+              {s.phone}
+            </a>
           </div>
         </div>
       </a>
