@@ -18,10 +18,13 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto grid gap-8 md:grid-cols-4">
           {/* ===== COL 1 ===== */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-scarlet font-bold text-2xl leading-none">R</span>
-              <span className="text-white font-bold text-2xl leading-none">eForma</span>
-            </div>
+ <div className="flex items-center font-bold text-2xl leading-none">
+  <span className="text-scarlet">R</span>
+  <span className="text-white tracking-[-1px]">e</span>
+  <span className="text-scarlet">F</span>
+  <span className="text-white tracking-[-1px]">orma</span>
+</div>
+
 
             <div className="text-xs md:text-sm text-white/70 space-y-2">
               <div>© {year} “REFORMA”. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
