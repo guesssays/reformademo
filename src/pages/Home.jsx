@@ -194,20 +194,33 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Фото */}
-          <div className="order-1 md:order-2">
-            <img src="/images/infoblock1.png" alt="Фитнес зал ReForma" className="rounded-xl w-full h-auto" />
-          </div>
+        {/* Фото */}
+<div className="order-1 md:order-2 relative rounded-xl overflow-hidden">
+  <div className="pb-[66%]" /> {/* аспект ~3:2 */}
+  <img
+    src="/images/infoblock1.png"
+    alt="Фитнес зал ReForma"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+</div>
+
+
         </div>
       </Section>
 
       {/* ИНФО-БЛОК 2 */}
       <Section className="bg-paper">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Фото слева */}
-          <div className="order-1">
-            <img src="/images/infoblock2.png" alt="Команда ReForma" className="rounded-xl w-full h-auto" />
-          </div>
+<div className="order-1 relative rounded-xl overflow-hidden">
+  <div className="pb-[66%]" /> {/* аспект ~3:2 */}
+  <img
+    src="/images/infoblock2.png"
+    alt="Команда ReForma"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+</div>
+
+
 
           {/* Текст справа */}
           <div className="order-2 text-right">

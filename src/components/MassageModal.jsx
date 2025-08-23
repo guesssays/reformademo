@@ -61,7 +61,7 @@ export default function MassageModal({ open, onClose }) {
           {/* верхняя картинка */}
           <div className="relative h-32 sm:h-40">
             <img
-              src="/images/modal/top.jpg"
+              src="/images/massage3.jpg"
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
             />

@@ -6,6 +6,115 @@ import { directions as allDirections, studios as studiosBase } from "../data/hom
 import { studiosPageData } from "../data/studiosPageData.js";
 import TrialModal from "../components/TrialModal.jsx"; // ← модалка
 import { useEffect } from "react";
+
+
+function InfoCarousel({ images = [] }) {
+  const pics = (Array.isArray(images) ? images : []).filter(Boolean);
+  const [i, setI] = useState(0);
+
+  if (pics.length === 0) return null;
+
+  const next = () => setI((p) => (p + 1) % pics.length);
+  const prev = () => setI((p) => (p - 1 + pics.length) % pics.length);
+
+  // Один кадр — просто картинка с тем же аспектом
+  if (pics.length === 1) {
+    return (
+      <div className="relative rounded-xl overflow-hidden">
+        <div className="pb-[62%]" />
+        <img src={pics[0]} alt="" className="absolute inset-0 w-full h-full object-cover" />
+      </div>
+    );
+  }
+
+  // Несколько — карусель
+  return (
+    <div
+      className="group relative rounded-xl overflow-hidden"
+      onKeyDown={(e) => {
+        if (e.key === "ArrowRight") next();
+        if (e.key === "ArrowLeft") prev();
+      }}
+      tabIndex={0}
+      aria-roledescription="carousel"
+    >
+      {/* фиксированный аспект */}
+      <div className="pb-[62%]" />
+
+      {/* Слайды */}
+      {pics.map((src, idx) => (
+        <img
+          key={src + idx}
+          src={src}
+          alt=""
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            idx === i ? "opacity-100" : "opacity-0"
+          }`}
+          loading={idx === i ? "eager" : "lazy"}
+        />
+      ))}
+
+      {/* Градиенты по краям, чтобы стрелки читались */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/25 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black/25 to-transparent" />
+
+
+<button
+  type="button"
+  onClick={prev}
+  className="absolute left-2 top-1/2 -translate-y-1/2
+             h-11 min-w-11 px-3
+             rounded-full border border-white/20
+             bg-black/35 backdrop-blur-sm
+             text-white shadow-md
+             opacity-100 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100
+             transition-opacity hover:bg-black/45 focus:outline-none focus:ring-2 focus:ring-white/50
+             flex items-center justify-center"
+  aria-label="Предыдущая фотография"
+>
+  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+</button>
+
+
+<button
+  type="button"
+  onClick={next}
+  className="absolute right-2 top-1/2 -translate-y-1/2
+             h-11 min-w-11 px-3
+             rounded-full border border-white/20
+             bg-black/35 backdrop-blur-sm
+             text-white shadow-md
+             opacity-100 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100
+             transition-opacity hover:bg-black/45 focus:outline-none focus:ring-2 focus:ring-white/50
+             flex items-center justify-center"
+  aria-label="Следующая фотография"
+>
+  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+</button>
+
+
+      {/* Точки-индикаторы */}
+      <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+        {pics.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setI(idx)}
+            aria-label={`Слайд ${idx + 1}`}
+            className={`h-2.5 rounded-full transition-all
+                        ${idx === i ? "w-6 bg-white shadow" : "w-2.5 bg-white/70 hover:bg-white"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+
 export default function StudioPage() {
   const { id } = useParams(); // st-aly | st-alm
   const base = studiosBase.find((s) => s.id === id);
@@ -113,15 +222,11 @@ export default function StudioPage() {
           <div className="mx-auto w-[94%] md:w-2/3 lg:w-3/5">
             <div className="bg-white rounded-[22px] p-4 md:p-6 lg:p-8 shadow-soft">
               <div className="grid md:grid-cols-[1.05fr,1fr] gap-6 items-stretch">
-                {/* Фото слева: явная высота/аспект + object-cover => кадрирование */}
-                <div className="relative rounded-xl overflow-hidden">
-                  <div className="pb-[66%] md:pb-[62%]" /> {/* ~3:2-1.6:1 аспект */}
-                  <img
-                    src={data.info.photo}
-                    alt=""
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </div>
+        
+                 {/* Фото слева → карусель */}
+<InfoCarousel images={(data.info.photos && data.info.photos.length ? data.info.photos : [data.info.photo])} />
+
+  
 
                 {/* Текст справа */}
                 <div className="flex flex-col">
@@ -179,29 +284,39 @@ export default function StudioPage() {
         </div>
       </Section>
 
-      {/* ===== Преимущества ===== */}
-      <Section className="bg-paper">
-        <h2 className="font-bebas text-[32px] md:text-[44px] leading-tight text-[#161A1D] mb-6">
-          {data.advantages.title}
-        </h2>
-        <div className="bg-white rounded-2xl p-6 md:p-10 shadow-soft">
-          <div className="grid lg:grid-cols-[1.15fr,1fr] gap-8 items-center">
-            <div className="rounded-2xl overflow-hidden">
-              <img src={data.advantages.image} alt="" className="w-full h-full object-cover" />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {data.advantages.blocks.map((b, i) => (
-                <div key={i}>
-                  <h3 className="font-bebas text-[20px] md:text-[22px]">{b.title}</h3>
-                  <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D] mt-1">
-                    {b.text}
-                  </p>
-                </div>
-              ))}
-            </div>
+     {/* ===== Преимущества ===== */}
+<Section className="bg-paper">
+  <h2 className="font-bebas text-[32px] md:text-[44px] leading-tight text-[#161A1D] mb-6">
+    {data.advantages.title}
+  </h2>
+  <div className="bg-white rounded-2xl p-6 md:p-10 shadow-soft">
+    <div className="grid lg:grid-cols-[1.15fr,1fr] gap-8 items-center">
+      
+      {/* Фото с фиксированным аспектом */}
+      <div className="relative rounded-2xl overflow-hidden">
+        <div className="pb-[65%]" /> {/* задаём высоту через padding-bottom (примерно 3:2) */}
+        <img 
+          src={data.advantages.image} 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover" 
+        />
+      </div>
+
+      {/* Текст справа */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {data.advantages.blocks.map((b, i) => (
+          <div key={i}>
+            <h3 className="font-bebas text-[20px] md:text-[22px]">{b.title}</h3>
+            <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D] mt-1">
+              {b.text}
+            </p>
           </div>
-        </div>
-      </Section>
+        ))}
+      </div>
+    </div>
+  </div>
+</Section>
+
 
       {/* ===== Направления: квадратные карточки, большие бейджи/заголовки на десктопе ===== */}
       <Section className="bg-paper">
@@ -299,12 +414,20 @@ export default function StudioPage() {
           </div>
         </div>
       </Section>
+{/* ===== Расписание ===== */}
+<Section className="bg-paper">
+  <h2 className="font-bebas text-[32px] md:text-[44px] leading-tight text-[#161A1D] mb-6">
+    {data.scheduleTitle}
+  </h2>
 
-      {/* ===== Расписание ===== */}
-      <Section className="bg-paper">
-        <h2 className="font-bebas text-[32px] md:text-[44px] leading-tight text-[#161A1D] mb-6">
-          {data.scheduleTitle}
-        </h2>
+  {(() => {
+    const values = Object.values(data.schedule || {});
+    const first = values[0];
+    const isMultiHall = first && typeof first === "object" && !Array.isArray(first);
+
+    // ВАРИАНТ 1: один зал (как было раньше)
+    if (!isMultiHall) {
+      return (
         <div className="grid md:grid-cols-3 xl:grid-cols-6 gap-4">
           {Object.entries(data.schedule).map(([day, items]) => (
             <div key={day} className="bg-white rounded-2xl p-4 shadow-soft">
@@ -321,7 +444,40 @@ export default function StudioPage() {
             </div>
           ))}
         </div>
-      </Section>
+      );
+    }
+
+    // ВАРИАНТ 2: несколько залов (ЗАЛ №1, ЗАЛ №2 ...)
+    return (
+      <div className="space-y-10">
+        {Object.entries(data.schedule).map(([hallName, hallSchedule]) => (
+          <div key={hallName}>
+            <div className="font-bebas text-[26px] md:text-[32px] mb-4">
+              {hallName}
+            </div>
+            <div className="grid md:grid-cols-3 xl:grid-cols-6 gap-4">
+              {Object.entries(hallSchedule).map(([day, items]) => (
+                <div key={day} className="bg-white rounded-2xl p-4 shadow-soft">
+                  <div className="bg-scarlet text-white rounded-lg px-3 py-2 font-bebas text-lg text-center mb-3">
+                    {day}
+                  </div>
+                  <ul className="space-y-2">
+                    {items.map((t, i) => (
+                      <li key={i} className="bg-ink/5 rounded-md px-3 py-2 text-[14px] font-helvCond">
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  })()}
+</Section>
+
 
       {/* ===== сама модалка ===== */}
       <TrialModal open={modalOpen} onClose={() => setModalOpen(false)} />

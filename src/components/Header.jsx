@@ -210,10 +210,10 @@ function RightPart({ setMobileOpen, scheduleOpen, setScheduleOpen }) {
 
       {/* Десктоп: соцсети + расписание */}
       <div className="hidden lg:flex items-center gap-3">
-        <a href="https://t.me/" target="_blank" rel="noreferrer" className="icon-btn" aria-label="Telegram">
+        <a href="https://t.me/reforma_fitness" target="_blank" rel="noreferrer" className="icon-btn" aria-label="Telegram">
           <TelegramIcon />
         </a>
-        <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="icon-btn" aria-label="Instagram">
+        <a href="https://www.instagram.com/reforma_uz/?hl=ru" target="_blank" rel="noreferrer" className="icon-btn" aria-label="Instagram">
           <InstagramIcon />
         </a>
 
@@ -337,11 +337,11 @@ function MobilePanel({ open, onClose }) {
 
         {/* Соцкнопки — по центру */}
         <div className="mt-4 flex items-center justify-center gap-3">
-          <a href="https://t.me/" target="_blank" rel="noreferrer"
+          <a href="https://t.me/reforma_fitness" target="_blank" rel="noreferrer"
              className="inline-flex w-10 h-10 items-center justify-center rounded-full bg-ink/10 text-ink hover:bg-ink/15">
             <TelegramIcon />
           </a>
-          <a href="https://instagram.com/" target="_blank" rel="noreferrer"
+          <a href="https://www.instagram.com/reforma_uz/?hl=ru" target="_blank" rel="noreferrer"
              className="inline-flex w-10 h-10 items-center justify-center rounded-full bg-ink/10 text-ink hover:bg-ink/15">
             <InstagramIcon />
           </a>

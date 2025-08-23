@@ -86,15 +86,13 @@ export default function Footer() {
               </div>
 
               <div className="mt-4 flex items-center gap-3">
-                <a href="#" aria-label="Telegram" className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-white hover:bg-white/10 transition">
+                <a href="https://t.me/reforma_fitness" aria-label="Telegram" className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-white hover:bg-white/10 transition">
                   <Send size={18} />
                 </a>
-                <a href="#" aria-label="Instagram" className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-white hover:bg-white/10 transition">
+                <a href="https://www.instagram.com/reforma_uz/?hl=ru" aria-label="Instagram" className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-white hover:bg-white/10 transition">
                   <Instagram size={18} />
                 </a>
-                <a href="#" aria-label="Facebook" className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-white hover:bg-white/10 transition">
-                  <Facebook size={18} />
-                </a>
+               
               </div>
             </div>
           </div>

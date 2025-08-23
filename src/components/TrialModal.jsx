@@ -164,7 +164,7 @@ export default function TrialModal({ open, onClose }) {
           {/* верхняя картинка */}
           <div className="relative h-32 sm:h-40">
             <img
-              src="/images/modal/top.jpg"
+              src="/images/top.jpg"
               alt=""
               className="absolute inset-0 h-full w-full object-cover"
             />
