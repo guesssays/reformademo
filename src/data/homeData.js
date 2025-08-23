@@ -103,5 +103,7 @@ export const reviews = [
   { img: "/images/reviews/rev-7.jpg" },
   { img: "/images/reviews/rev-8.jpg" },
   { img: "/images/reviews/rev-9.jpg" },  // 🔹 новое
-  { img: "/images/reviews/rev-10.jpg" } // 🔹 новое
+  { img: "/images/reviews/rev-10.jpg" },
+   { img: "/images/reviews/rev-11.jpg" },
+    { img: "/images/reviews/rev-12.jpg" }, // 🔹 новое
 ];
