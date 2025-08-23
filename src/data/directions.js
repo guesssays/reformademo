@@ -1,6 +1,6 @@
 // ======================= src/data/directions.js =======================
 export const directionsData = [
-  // --- STRETCHING (полный пример из твоего сообщения) ---
+  // --- STRETCHING ---
   {
     slug: "stretching",
     title: "STRETCHING",
@@ -85,90 +85,6 @@ export const directionsData = [
       title: "Фитнес микс в ReForma",
       description: "Силовые и кардио блоки для здоровья и фигуры. Пробное занятие — звоните!",
       keywords: "фитнес микс ташкент, функциональные тренировки"
-    }
-  },
-  {
-    slug: "fitness-pilates",
-    title: "Фитнес + пилатес",
-    tag: "MOVEMENT",
-    hero: {
-      image: "/images/directions/fitness-pilates/hero.jpg",
-      title: "Фитнес + пилатес",
-      subtitle: "Сочетание функционального тренинга и пилатеса для осанки и тонуса",
-      ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
-      ctaHref: "tel:+998933775697"
-    },
-    intro: {
-      imageLeft: "/images/directions/fitness-pilates/intro.jpg",
-      title: "Сила корпуса и контроль движения",
-      text: "Работаем с центрированием, дыханием и стабильностью, удерживая общий темп тренировки."
-    },
-    benefitsBlock: {
-      title: "Основные преимущества Фитнес + пилатес",
-      items: [
-        { title: "Осанка", text: "Укрепление мышц корпуса и спины." },
-        { title: "Безопасность", text: "Контроль техники снижает риск травм." },
-        { title: "Тонус", text: "Силовые блоки поддерживают форму." },
-        { title: "Гибкость", text: "Растяжка в конце каждого занятия." }
-      ]
-    },
-    prepareSteps: [
-      { n: 1, title: "Уровень", text: "Любой — тренер адаптирует нагрузку." },
-      { n: 2, title: "Коврик", text: "При необходимости предоставим." },
-      { n: 3, title: "Настрой", text: "Сконцентрируйтесь на дыхании." }
-    ],
-    studios: ["st-aly","st-alm"],
-    gallery: [
-      "/images/directions/fitness-pilates/g1.jpg",
-      "/images/directions/fitness-pilates/g2.jpg",
-      "/images/directions/fitness-pilates/g3.jpg"
-    ],
-    seo: {
-      title: "Фитнес + пилатес в ReForma",
-      description: "Сила и осанка без перегрузок. Попробуйте первое занятие.",
-      keywords: "пилатес ташкент, фитнес и пилатес"
-    }
-  },
-  {
-    slug: "body-fit",
-    title: "Body fit",
-    tag: "MOVEMENT",
-    hero: {
-      image: "/images/directions/body-fit/hero.jpg",
-      title: "Body fit",
-      subtitle: "Силовая проработка тела с акцентом на проблемные зоны",
-      ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
-      ctaHref: "tel:+998933775697"
-    },
-    intro: {
-      imageLeft: "/images/directions/body-fit/intro.jpg",
-      title: "Выточенная фигура и сильный корпус",
-      text: "Тренировка с резинками, гантелями и собственным весом — для рельефа и тонуса."
-    },
-    benefitsBlock: {
-      title: "Основные преимущества Body fit",
-      items: [
-        { title: "Рельеф", text: "Локальная работа над зоной бёдер и ягодиц." },
-        { title: "Сила", text: "Увеличение рабочей нагрузки постепенно." },
-        { title: "Метаболизм", text: "Силовая работа расходует больше энергии." },
-        { title: "Самочувствие", text: "Улучшение выносливости и осанки." }
-      ]
-    },
-    prepareSteps: [
-      { n: 1, title: "Обувь", text: "Плотные кроссовки." },
-      { n: 2, title: "Полотенце", text: "И вода к каждому занятию." },
-      { n: 3, title: "Регулярность", text: "2–3 раза в неделю для прогресса." }
-    ],
-    studios: ["st-aly","st-alm"],
-    gallery: [
-      "/images/directions/body-fit/g1.jpg",
-      "/images/directions/body-fit/g2.jpg",
-      "/images/directions/body-fit/g3.jpg"
-    ],
-    seo: {
-      title: "Body fit в ReForma",
-      description: "Силовые тренировки для рельефа и тонуса. Запишитесь на пробное.",
-      keywords: "body fit ташкент, силовые тренировки для девушек"
     }
   },
   {
@@ -298,48 +214,6 @@ export const directionsData = [
     }
   },
   {
-    slug: "fitness-stretching",
-    title: "Фитнес + стретчинг",
-    tag: "MOVEMENT",
-    hero: {
-      image: "/images/directions/fitness-stretch/hero.jpg",
-      title: "Фитнес + стретчинг",
-      subtitle: "Силовые блоки и растяжка в одном занятии",
-      ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
-      ctaHref: "tel:+998933775697"
-    },
-    intro: {
-      imageLeft: "/images/directions/fitness-stretch/intro.jpg",
-      title: "Баланс силы и гибкости",
-      text: "Работа над мышечным тонусом и мобильностью суставов."
-    },
-    benefitsBlock: {
-      title: "Основные преимущества Фитнес + стретчинг",
-      items: [
-        { title: "Тонус", text: "Силовые связки для форм." },
-        { title: "Гибкость", text: "Растяжка после нагрузки." },
-        { title: "Освобождение зажимов", text: "Декомпрессия мышц." },
-        { title: "Профилактика травм", text: "Мобилизация суставов." }
-      ]
-    },
-    prepareSteps: [
-      { n: 1, title: "Форма", text: "Эластичная одежда." },
-      { n: 2, title: "Вода", text: "Небольшие глотки во время тренировки." },
-      { n: 3, title: "Регулярность", text: "2–3 раза в неделю." }
-    ],
-    studios: ["st-aly","st-alm"],
-    gallery: [
-      "/images/directions/fitness-stretch/g1.jpg",
-      "/images/directions/fitness-stretch/g2.jpg",
-      "/images/directions/fitness-stretch/g3.jpg"
-    ],
-    seo: {
-      title: "Фитнес + стретчинг в ReForma",
-      description: "Сочетание силовой работы и растяжки для гармонии тела.",
-      keywords: "фитнес и растяжка, гибкость и сила"
-    }
-  },
-  {
     slug: "k-pop",
     title: "K-pop",
     tag: "MOVEMENT",
@@ -353,7 +227,7 @@ export const directionsData = [
     intro: {
       imageLeft: "/images/directions/k-pop/intro.jpg",
       title: "Хореография, пластика и ритм",
-      text: "Разучиваем движения и работаem над синхронизацией."
+      text: "Разучиваем движения и работаем над синхронизацией."
     },
     benefitsBlock: {
       title: "Основные преимущества K-pop",
@@ -596,48 +470,6 @@ export const directionsData = [
     }
   },
   {
-    slug: "pilates-stretching",
-    title: "Пилатес + стретчинг",
-    tag: "RECOVERY",
-    hero: {
-      image: "/images/directions/pilates-stretching/hero.jpg",
-      title: "Пилатес + стретчинг",
-      subtitle: "Комбинация на осанку, гибкость и мобильность",
-      ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
-      ctaHref: "tel:+998933775697"
-    },
-    intro: {
-      imageLeft: "/images/directions/pilates-stretching/intro.jpg",
-      title: "Контроль + растяжка",
-      text: "Мягко укрепляем корпус и освобождаем зажимы."
-    },
-    benefitsBlock: {
-      title: "Основные преимущества Пилатес + стретчинг",
-      items: [
-        { title: "Осанка", text: "Стабилизация и мобильность." },
-        { title: "Гибкость", text: "Мягкая работа с мышцами." },
-        { title: "Самочувствие", text: "Расслабление в конце." },
-        { title: "Безопасность", text: "Подходит даже новичкам." }
-      ]
-    },
-    prepareSteps: [
-      { n: 1, title: "Темп", text: "Не спешите, важна техника." },
-      { n: 2, title: "Коврик", text: "По желанию свой." },
-      { n: 3, title: "Питьевой режим", text: "Небольшие глотки." }
-    ],
-    studios: ["st-aly","st-alm"],
-    gallery: [
-      "/images/directions/pilates-stretching/g1.jpg",
-      "/images/directions/pilates-stretching/g2.jpg",
-      "/images/directions/pilates-stretching/g3.jpg"
-    ],
-    seo: {
-      title: "Пилатес + стретчинг в ReForma",
-      description: "Мягкая сила и гибкость в одном занятии.",
-      keywords: "пилатес растяжка"
-    }
-  },
-  {
     slug: "yoga-therapy",
     title: "Йогатерапия",
     tag: "RECOVERY",
@@ -804,5 +636,5 @@ export const directionsData = [
       description: "Растяжка в гамаках — мягкая и эффективная.",
       keywords: "аэростретчинг ташкент"
     }
-  },
+  }
 ];

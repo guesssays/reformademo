@@ -38,18 +38,28 @@ function GradientNumber({ value, className = "" }) {
 
 // Доп. текст для карточек (по референсу и твоим пожеланиям)
 const whyExtras = [
-  `Гибкие абонементы: разовые, месячные, квартальные; дневные/вечерние тарифы, семейные
-  и парные предложения. Заморозка без скрытых комиссий, прозрачные правила возвратов.
-  Спец-цены для новичков, студентов и корпоративных клиентов.`,
-  `Широкая сетка направлений: функциональные тренировки, TRX, стретчинг, пилон, аэройога,
-  body&mind-программы, персональные тренировки и реабилитация. Удобное расписание утром,
-  днём и вечером — с быстрым онлайн-записыванием.`,
-  `Сертифицированные тренеры с опытом 5+ лет. Индивидуальная регрессия/прогрессия нагрузки,
-  техника под контролем. Зал оснащён современным оборудованием, поддерживаем санитарные
-  нормы и комфортный микроклимат.`,
-  `Бонусы за каждую тренировку, кешбэк баллами, подарочные сертификаты. Дни открытых дверей,
-  акции к праздникам, скидки на продление абонементов и рекомендации друзьям.`
+  // 01 — Гибкая система абонементов
+  `Различные виды абонементов: 8 занятий, 12 занятий, микс абонементы, VIP абонементы, абонементы на 3, 6 и 12 месяцев, индивидуальные занятия, разовые посещения.
+Множество акций и бонусов: скидки для подруг, коллег, пенсионеров и именинников, подарки от партнёров, скидки на абонементы и SPA процедуры, бесплатные консультации от массажистов, ежедневные горящие окошки на массаж со скидкой 15%.`,
+
+  // 02 — Система лояльности
+  `Мы ценим каждого клиента и подготовили удобные уровни абонементов, чтобы занятия были ещё выгоднее.
+Simple — стартовый абонемент для новичков.
+Bronze — даёт 10% скидку на абонемент на второй и третий месяц занятий.
+Silver — 15% скидка. Доступен в четвертый и пятый месяцы занятий.
+Gold — максимальная выгода: 25% скидка на абонементы. Для наших самых активных и преданных клиенток. Абонемент доступен с шестого месяца.`,
+
+  // 03 — Большой выбор занятий
+  `Силовые, функциональные, танцевальные и растяжка — выбирайте своё.
+Более 15 направлений занятий, удобное расписание утром, днём и вечером с быстрой онлайн записью.`,
+
+  // 04 — Команда профессионалов
+  `Сертифицированные тренеры и массажисты с большим опытом, постоянное обучение, дружелюбная атмосфера.`,
+
+  // 05 — SPA-зона
+  `Забота о себе — это не только тренировки, но и отдых. В нашей СПА-зоне вы сможете расслабиться, восстановить силы и подарить телу заслуженное внимание.`,
 ];
+
 
 export default function Home() {
   const [trialOpen, setTrialOpen] = useState(false);
@@ -222,32 +232,35 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ПОЧЕМУ ВЫБИРАЮТ */}
-      <Section className="bg-paper">
-        <h2 className="font-bebas text-[56px] md:text-[72px] leading-tight text-[#161A1D] mb-12">
-          Почему выбирают <span className="text-scarlet">R</span>E<span className="text-scarlet">F</span>orma
-        </h2>
+     {/* ПОЧЕМУ ВЫБИРАЮТ */}
+<Section className="bg-paper">
+  <h2 className="font-bebas text-[56px] md:text-[72px] leading-tight text-[#161A1D] mb-12">
+    Почему выбирают <span className="text-scarlet">R</span>E<span className="text-scarlet">F</span>orma
+  </h2>
 
-        <div className="space-y-10">
-          {why.slice(0, 4).map((w, i) => (
-            <div key={i} className="grid md:grid-cols-2 items-stretch bg-white rounded-2xl shadow-lg overflow-hidden">
-              {/* Картинка слева */}
-              <div className="relative h-[260px] sm:h-[300px] md:h-auto md:min_h-full">
-                <img src={w.img} alt="" className="absolute inset-0 w-full h-full object-cover" />
-              </div>
-
-              {/* Контент справа */}
-              <div className="p-8 md:p-12 flex flex-col justify-center gap-5">
-                <GradientNumber value={w.n ?? i + 1} className="w-[140px] md:w-[180px] h-auto -mt-2 -mb-2" />
-                <h3 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D]">{w.title}</h3>
-                <div className="w-28 md:w-36 h-[8px] bg-gradient-to-r from-[#e5383b] to-[#ba181b]" />
-                <p className="text-[#4b4b4b] text-[18px] md:text-[20px] leading-snug">{w.text}</p>
-                <p className="text-[#4b4b4b] text-[18px] md:text-[20px] leading-snug">{whyExtras[i]}</p>
-              </div>
-            </div>
-          ))}
+  <div className="space-y-10">
+    {why.map((w, i) => (
+      <div key={w.n || i} className="grid md:grid-cols-2 items-stretch bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="relative h-[260px] sm:h-[300px] md:h-auto">
+          <img src={w.img} alt={w.title} className="absolute inset-0 w-full h-full object-cover" />
         </div>
-      </Section>
+
+        <div className="p-8 md:p-12 flex flex-col justify-center gap-5">
+          <GradientNumber value={w.n ?? i + 1} className="w-[140px] md:w-[180px] h-auto -mt-2 -mb-2" />
+          <h3 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D]">{w.title}</h3>
+          <div className="w-28 md:w-36 h-[8px] bg-gradient-to-r from-[#e5383b] to-[#ba181b]" />
+          <p className="text-[#4b4b4b] text-[18px] md:text-[20px] leading-snug">{w.text}</p>
+          {whyExtras[i] && (
+            <p className="text-[#4b4b4b] text-[18px] md:text-[20px] leading-snug whitespace-pre-line">
+              {whyExtras[i]}
+            </p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</Section>
+
 
       <Section id="directions" className="section--bleed bg-paper">
         {/* Заголовок */}

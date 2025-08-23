@@ -5,22 +5,10 @@ export const advantages = [
     img: "/images/adv-1.svg" 
   },
   { 
-    title: "Современный зал", 
-    text: "Петли TRX, пилоны, функциональные модули, мягкий свет.", 
-    img: "/images/adv-2.svg" 
-  },
-  { 
-    title: "Удобное расписание", 
-    text: "Утренние и вечерние группы, пробное занятие для новичков.", 
-    img: "/images/adv-3.svg" 
-  },
-  { 
     title: "Индивидуальный подход", 
     text: "Тренеры помогут выбрать программу под вашу цель.", 
     img: "/images/adv-4.svg" 
   },
-
-  // 🔹 Новые карточки
   { 
     title: "Результаты и поддержка", 
     text: "Тренеры сопровождают вас на каждом этапе для достижения целей.", 
@@ -30,6 +18,11 @@ export const advantages = [
     title: "Уютная атмосфера", 
     text: "Стильный интерьер, мягкий свет и удобные раздевалки.", 
     img: "/images/adv-6.svg" 
+  },
+  { 
+    title: "Здоровое сообщество", 
+    text: "Поддержка единомышленниц, новые знакомства и вдохновение.", 
+    img: "/images/adv-9.svg" // 🔹 добавь отдельную иконку
   },
   { 
     title: "Здоровье и энергия", 
@@ -44,38 +37,40 @@ export const advantages = [
 ];
 
 
+
 export const why = [
-  { n: "01", title: "Гибкая система абонементов", text: "Несколько тарифов и форматов занятий — под любой режим дня." , img:"/images/why-1.jpg"},
-  { n: "02", title: "Большой выбор занятий", text: "Силовые, функциональные, танцевальные и растяжка — выберите своё." , img:"/images/why-2.jpg"},
-  { n: "03", title: "Команда профессионалов", text: "Опытные тренеры, постоянное обучение и дружелюбная атмосфера." , img:"/images/why-3.jpg"},
-  { n: "04", title: "SPA-зона", text: "Расслабляйтесь после тренировки: чай, инфракрасная сауна, отдых." , img:"/images/why-4.jpg"},
+  { n: "01", title: "Гибкая система абонементов", text: "Различные форматы: 8, 12 занятий, микс, VIP, 3/6/12 месяцев, индивидуальные и разовые посещения.", img: "/images/why-1.jpg" },
+
+  { n: "02", title: "Система лояльности", text: "Уровни выгод: Simple, Bronze, Silver, Gold — чем дольше занимаетесь, тем больше скидка.", img: "/images/why-5.jpg" }, // добавь why-5.jpg
+
+  { n: "03", title: "Большой выбор занятий", text: "Силовые, функциональные, танцевальные и растяжка — более 15 направлений, удобная онлайн-запись.", img: "/images/why-2.jpg" },
+
+  { n: "04", title: "Команда профессионалов", text: "Сертифицированные тренеры и массажисты, постоянное обучение и дружелюбная атмосфера.", img: "/images/why-3.jpg" },
+
+  { n: "05", title: "SPA-зона", text: "Отдых и восстановление: чай, инфракрасная сауна и расслабляющие процедуры.", img: "/images/why-4.jpg" },
 ];
 
 export const directions = [
   // MOVEMENT
-  { slug: "fitness-mix",            tag: "MOVEMENT", title: "Фитнес микс",                    img: "/images/directions/fitness-mix.png" },
-  { slug: "fitness-pilates",        tag: "MOVEMENT", title: "Фитнес + пилатес",               img: "/images/directions/fitness-pilates.png" },
-  { slug: "body-fit",               tag: "MOVEMENT", title: "Body fit",                       img: "/images/directions/body-fit.png" },
-  { slug: "weightloss",             tag: "MOVEMENT", title: "Похудейка",                      img: "/images/directions/weightloss.png" },
-  { slug: "twerk",                  tag: "MOVEMENT", title: "Тверк",                          img: "/images/directions/twerk.png" },
-  { slug: "trampoline-fitness",     tag: "MOVEMENT", title: "Фитнес на батутах",              img: "/images/directions/trampoline.png" },
-  { slug: "fitness-stretching",     tag: "MOVEMENT", title: "Фитнес + стретчинг",             img: "/images/directions/fitness-stretch.png" },
-  { slug: "k-pop",                  tag: "MOVEMENT", title: "K-pop",                          img: "/images/directions/kpop.png" },
-  { slug: "arabic-dance-fitness",   tag: "MOVEMENT", title: "Арабские танцы + фитнес",        img: "/images/directions/arabic-dance-fitness.png" },
+  { slug: "fitness-mix",          tag: "MOVEMENT", title: "Фитнес микс",             img: "/images/directions/fitness-mix.png" },
+  { slug: "weightloss",           tag: "MOVEMENT", title: "Похудейка",                img: "/images/directions/weightloss.png" },
+  { slug: "twerk",                tag: "MOVEMENT", title: "Тверк",                    img: "/images/directions/twerk.png" },
+  { slug: "trampoline-fitness",   tag: "MOVEMENT", title: "Фитнес на батутах",        img: "/images/directions/trampoline.png" },
+  { slug: "k-pop",                tag: "MOVEMENT", title: "K-pop",                    img: "/images/directions/kpop.png" },
+  { slug: "arabic-dance-fitness", tag: "MOVEMENT", title: "Арабские танцы + фитнес",  img: "/images/directions/arabic-dance-fitness.png" },
 
   // MINDSET
-  { slug: "yoga",            tag: "MINDSET", title: "Йога",                 img: "/images/directions/yoga.png" },
-  { slug: "yoga-pregnant",   tag: "MINDSET", title: "Йога для беременных",  img: "/images/directions/yoga-pregnant.png" },
-  { slug: "yoga-women",      tag: "MINDSET", title: "Женская йога",         img: "/images/directions/yoga-women.png" },
+  { slug: "yoga",          tag: "MINDSET", title: "Йога",                img: "/images/directions/yoga.png" },
+  { slug: "yoga-pregnant", tag: "MINDSET", title: "Йога для беременных", img: "/images/directions/yoga-pregnant.png" },
+  { slug: "yoga-women",    tag: "MINDSET", title: "Женская йога",        img: "/images/directions/yoga-women.png" },
 
   // RECOVERY
-  { slug: "pilates",              tag: "RECOVERY", title: "Пилатес",               img: "/images/directions/pilates.png" },
-  { slug: "pilates-stretching",   tag: "RECOVERY", title: "Пилатес + стретчинг",   img: "/images/directions/pilates-stretch.png" },
-  { slug: "stretching",           tag: "RECOVERY", title: "Стретчинг",             img: "/images/directions/stretch.png" },
-  { slug: "yoga-therapy",         tag: "RECOVERY", title: "Йогатерапия",           img: "/images/directions/yoga-therapy.png" },
-  { slug: "aerial-yoga",          tag: "RECOVERY", title: "Аэройога",              img: "/images/directions/aero-yoga.png" },
-  { slug: "women-health",         tag: "RECOVERY", title: "Женское здоровье",      img: "/images/directions/women-health.png" },
-  { slug: "aerial-stretching",    tag: "RECOVERY", title: "Аэростретчинг",         img: "/images/directions/aero-stretch.png" },
+  { slug: "pilates",           tag: "RECOVERY", title: "Пилатес",          img: "/images/directions/pilates.png" },
+  { slug: "stretching",        tag: "RECOVERY", title: "Стретчинг",        img: "/images/directions/stretch.png" },
+  { slug: "yoga-therapy",      tag: "RECOVERY", title: "Йогатерапия",      img: "/images/directions/yoga-therapy.png" },
+  { slug: "aerial-yoga",       tag: "RECOVERY", title: "Аэройога",         img: "/images/directions/aero-yoga.png" },
+  { slug: "women-health",      tag: "RECOVERY", title: "Женское здоровье", img: "/images/directions/women-health.png" },
+  { slug: "aerial-stretching", tag: "RECOVERY", title: "Аэростретчинг",    img: "/images/directions/aero-stretch.png" },
 ];
 
 
