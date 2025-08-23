@@ -47,7 +47,7 @@ export const why = [
 
 
 
-  { n: "04", title: "SPA-зона", text: "Отдых и восстановление: чай, инфракрасная сауна и расслабляющие процедуры.", img: "/images/why-4.jpg" },
+  { n: "04", title: "SPA-зона", text: "Отдых и восстановление: чай, инфракрасная сауна и расслабляющие процедуры.", img: "/images/alm-8.jpg" },
 ];
 
 export const directions = [
@@ -79,7 +79,7 @@ export const directions = [
 export const studios = [
   {
     id: "st-aly",
-    short: "АЛМАЗАР",
+    short: "АЛАЙСКИЙ",
     title: "Юнусабадский район, Ц2, проезд Олой бозори 59/3",
     phone: "+998933775697",
     img: "/images/st-1.jpg"
@@ -88,7 +88,7 @@ export const studios = [
     id: "st-alm",
     short: "АЛИМКЕНТ",
     title: "Яшнабадский район, улица Алимкент 33",
-    phone: "+998933775697",
+    phone: "+998970365697",
     img: "/images/st-2.jpg"
   }
 ]

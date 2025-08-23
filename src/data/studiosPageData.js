@@ -206,7 +206,7 @@ info: {
   "st-alm": {
   titleHero: "АЛИМКЕНТ",
   heroImage: "/images/st-2.jpg",
-  ctaPhone: "tel:+998933775697",
+  ctaPhone: "tel:+998970365697",
 
 info: {
   photo: "/images/st-2.jpg",
