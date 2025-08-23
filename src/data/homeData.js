@@ -47,7 +47,7 @@ export const why = [
 
 
 
-  { n: "04", title: "SPA-зона", text: "Отдых и восстановление: чай, инфракрасная сауна и расслабляющие процедуры.", img: "/images/alm-8.jpg" },
+  { n: "04", title: "SPA-зона", text: "Отдых и восстановление.", img: "/images/alm-8.jpg" },
 ];
 
 export const directions = [
