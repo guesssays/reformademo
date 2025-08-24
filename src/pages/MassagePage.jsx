@@ -223,21 +223,18 @@ export default function MassagePage() {
                   className="h-[112px] w-[112px] rounded-xl object-cover"
                   loading="lazy"
                 />
-                <div>
-                  <h3 className="font-bebas text-[22px] text-[#161A1D] leading-none">
-                    {s.name}
-                  </h3>
-                  <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]/90">
-                    {s.role}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setModalOpen(true)}
-                    className={`${ctaClasses} mt-3`}
-                  >
-                    Записаться на массаж
-                  </button>
-                </div>
+ <div>
+  <h3 className="font-bebas text-[22px] text-[#161A1D] leading-none">
+    {s.name}
+  </h3>
+  <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]/90">
+    {s.role}
+  </p>
+  <p className="mt-2 font-helvCond text-[16px] text-[#161A1D]/80">
+    {s.description}
+  </p>
+</div>
+
               </div>
             </div>
           ))}
