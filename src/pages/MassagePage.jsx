@@ -206,6 +206,137 @@ export default function MassagePage() {
           </div>
         </div>
       </Section>
+{/* ================== Прайс ================== */}
+<Section className="bg-paper" id="pricing">
+  <div className="flex items-start justify-between gap-4 mb-4">
+    <h2 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D] leading-tight">
+      ПРАЙС НА УСЛУГИ
+    </h2>
+
+  </div>
+
+  {/* заметка + CTA */}
+  <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mb-6">
+    <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+      {data.pricing?.note}{" "}
+      <a href={`tel:${data.phones?.[0]?.replace(/\s/g,"")}`} className="underline decoration-ink/30 underline-offset-2 hover:decoration-ink">
+        {data.phones?.[0]}
+      </a>{" "}
+      или{" "}
+      <button type="button" onClick={() => setModalOpen(true)} className="underline decoration-ink/30 underline-offset-2 hover:decoration-ink">
+        оставьте заявку
+      </button>
+      .
+    </p>
+  </div>
+
+  {/* Сервисы */}
+  <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mb-6">
+    <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
+      {data.pricing?.servicesTitle}
+    </h3>
+    <div className="overflow-x-auto">
+      <table className="min-w-[720px] w-full border-separate border-spacing-y-2">
+        <thead>
+          <tr className="text-left font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/70">
+            <th className="py-2 px-3 rounded-l-lg bg-ink/5">Услуга</th>
+            <th className="py-2 px-3 bg-ink/5">Длительность</th>
+            <th className="py-2 px-3 bg-ink/5">Мастер</th>
+            <th className="py-2 px-3 rounded-r-lg bg-ink/5">Топ-мастер</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.pricing?.services?.map((s, idx) => (
+            <tr key={idx} className="bg-ink/3">
+              <td className="py-3 px-3 rounded-l-lg font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{s.name}</td>
+              <td className="py-3 px-3 font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{s.duration || "—"}</td>
+              <td className="py-3 px-3 font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{s.price ? `${s.price} сум` : "—"}</td>
+              <td className="py-3 px-3 rounded-r-lg font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{s.topPrice ? `${s.topPrice} сум` : "—"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {/* SPA пакеты */}
+  <div className="grid gap-4 md:grid-cols-2">
+    {/* Обычные SPA */}
+    <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft">
+      <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
+        {data.pricing?.spaTitle}
+      </h3>
+      <ul className="space-y-3">
+        {data.pricing?.spa?.map((p, i) => (
+          <li key={i} className="rounded-xl border border-ink/5 p-3">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="font-bebas text-[20px] md:text-[22px] text-[#161A1D] leading-none">{p.name}</p>
+                <p className="mt-1 font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/85">{p.includes}</p>
+              </div>
+              <div className="text-right">
+                <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{p.price} сум</p>
+                <p className="text-sm text-[#161A1D]/70 mt-0.5">{p.duration}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* Премиум SPA */}
+    <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft">
+      <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
+        {data.pricing?.premiumTitle}
+      </h3>
+      <ul className="space-y-3">
+        {data.pricing?.premium?.map((p, i) => (
+          <li key={i} className="rounded-xl border border-ink/5 p-3">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="font-bebas text-[20px] md:text-[22px] text-[#161A1D] leading-none">{p.name}</p>
+                <p className="mt-1 font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/85">{p.includes}</p>
+              </div>
+              <div className="text-right">
+                <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{p.price} сум</p>
+                <p className="text-sm text-[#161A1D]/70 mt-0.5">{p.duration}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  {/* Аппаратные процедуры */}
+  <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mt-6">
+    <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
+      {data.pricing?.hardwareTitle}
+    </h3>
+    <ul className="grid gap-2 sm:grid-cols-2">
+      {data.pricing?.hardware?.map((h, i) => (
+        <li key={i} className="flex items-center justify-between rounded-xl border border-ink/5 px-3 py-2">
+          <span className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{h.name}</span>
+          <span className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{h.price} сум</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* нижний CTA */}
+  <div className="mt-6 flex flex-wrap items-center gap-3">
+    <button type="button" onClick={() => setModalOpen(true)} className={ctaClasses}>
+      Оставить заявку
+    </button>
+    <a
+      href={`tel:${data.phones?.[0]?.replace(/\s/g,"")}`}
+      className="inline-flex items-center justify-center rounded-full border border-scarlet text-scarlet hover:bg-scarlet/5 font-bebas tracking-wide px-6 py-3 text-lg"
+    >
+      Позвонить {data.phones?.[0]}
+    </a>
+
+  </div>
+</Section>
 
       {/* ================== Специалисты ================== */}
       <Section className="bg-paper">
