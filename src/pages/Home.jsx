@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Section from "../components/Section.jsx";
 import TrialModal from "../components/TrialModal.jsx"; // ← модалка
-import { advantages, why, directions, studios, reviews } from "../data/homeData.js";
+import { advantages, why, directions, studios, reviews, promos } from "../data/homeData.js";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -36,26 +36,17 @@ function GradientNumber({ value, className = "" }) {
   );
 }
 
-// Доп. текст для карточек (по референсу и твоим пожеланиям)
+// Доп. текст для карточек
 const whyExtras = [
-  // 01 — Гибкая система абонементов
   `Множество акций и бонусов: скидки для подруг, коллег, пенсионеров и именинников, подарки от партнёров, скидки на абонементы и SPA процедуры, бесплатные консультации от массажистов, ежедневные горящие окошки на массаж со скидкой 15%.`,
-
-  // 02 — Система лояльности
   `Мы ценим каждого клиента и подготовили удобные уровни абонементов, чтобы занятия были ещё выгоднее.
 Simple — стартовый абонемент для новичков.
 Bronze — даёт 10% скидку на абонемент на второй и третий месяц занятий.
 Silver — 15% скидка. Доступен в четвертый и пятый месяцы занятий.
 Gold — максимальная выгода: 25% скидка на абонементы. Для наших самых активных и преданных клиенток. Абонемент доступен с шестого месяца.`,
-
-  // 03 — Большой выбор занятий
   `Разнообразие направлений и тренировок, удобное расписание утром, днём и вечером с быстрой онлайн записью.`,
-
-
-  // 04 — SPA-зона
   `Забота о себе — это не только тренировки, но и отдых. В нашей СПА-зоне вы сможете расслабиться, восстановить силы и подарить телу заслуженное внимание.`,
 ];
-
 
 export default function Home() {
   const [trialOpen, setTrialOpen] = useState(false);
@@ -66,6 +57,12 @@ export default function Home() {
     window.addEventListener("open-trial-modal", open);
     return () => window.removeEventListener("open-trial-modal", open);
   }, []);
+
+  // ===== ФИЛЬТР АКЦИЙ (перенесено внутрь компонента) =====
+  const [promoFilter, setPromoFilter] = useState("all"); // all | training | massage
+  const filteredPromos = promos.filter((p) =>
+    promoFilter === "all" ? true : p.category === promoFilter
+  );
 
   return (
     <>
@@ -100,7 +97,7 @@ export default function Home() {
 
                   {/* подзаголовок */}
                   <p className="text-paper/90 font-bebas max-w-2xl text-lg tracking-wide mb-3">
-          Уютные студии, женская атмосфера, программы тренировок для любого уровня, а также массаж и SPA-процедуры для полноценного восстановления.
+                    Уютные студии, женская атмосфера, программы тренировок для любого уровня, а также массаж и SPA-процедуры для полноценного восстановления.
                   </p>
 
                   {/* кнопка — открывает модалку */}
@@ -190,33 +187,29 @@ export default function Home() {
             </button>
           </div>
 
-        {/* Фото */}
-<div className="order-1 md:order-2 relative rounded-xl overflow-hidden">
-  <div className="pb-[66%]" /> {/* аспект ~3:2 */}
-  <img
-    src="/images/infoblock1.png"
-    alt="Фитнес зал ReForma"
-    className="absolute inset-0 w-full h-full object-cover"
-  />
-</div>
-
-
+          {/* Фото */}
+          <div className="order-1 md:order-2 relative rounded-xl overflow-hidden">
+            <div className="pb-[66%]" /> {/* аспект ~3:2 */}
+            <img
+              src="/images/infoblock1.png"
+              alt="Фитнес зал ReForma"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
         </div>
       </Section>
 
       {/* ИНФО-БЛОК 2 */}
       <Section className="bg-paper">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-<div className="order-1 relative rounded-xl overflow-hidden">
-  <div className="pb-[66%]" /> {/* аспект ~3:2 */}
-  <img
-    src="/images/infoblock2.png"
-    alt="Команда ReForma"
-    className="absolute inset-0 w-full h-full object-cover"
-  />
-</div>
-
-
+          <div className="order-1 relative rounded-xl overflow-hidden">
+            <div className="pb-[66%]" /> {/* аспект ~3:2 */}
+            <img
+              src="/images/infoblock2.png"
+              alt="Команда ReForma"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
 
           {/* Текст справа */}
           <div className="order-2 text-right">
@@ -241,35 +234,34 @@ export default function Home() {
         </div>
       </Section>
 
-     {/* ПОЧЕМУ ВЫБИРАЮТ */}
-<Section className="bg-paper">
-  <h2 className="font-bebas text-[56px] md:text-[72px] leading-tight text-[#161A1D] mb-12">
-    Почему выбирают <span className="text-scarlet">R</span>E<span className="text-scarlet">F</span>orma
-  </h2>
+      {/* ПОЧЕМУ ВЫБИРАЮТ */}
+      <Section className="bg-paper">
+        <h2 className="font-bebas text-[56px] md:text-[72px] leading-tight text-[#161A1D] mb-12">
+          Почему выбирают <span className="text-scarlet">R</span>E<span className="text-scarlet">F</span>orma
+        </h2>
 
-  <div className="space-y-10">
-    {why.map((w, i) => (
-      <div key={w.n || i} className="grid md:grid-cols-2 items-stretch bg-white rounded-2xl shadow-lg overflow-hidden">
-        <div className="relative h-[260px] sm:h-[300px] md:h-auto">
-          <img src={w.img} alt={w.title} className="absolute inset-0 w-full h-full object-cover" />
+        <div className="space-y-10">
+          {why.map((w, i) => (
+            <div key={w.n || i} className="grid md:grid-cols-2 items-stretch bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="relative h-[260px] sm:h-[300px] md:h-auto">
+                <img src={w.img} alt={w.title} className="absolute inset-0 w-full h-full object-cover" />
+              </div>
+
+              <div className="p-8 md:p-12 flex flex-col justify-center gap-5">
+                <GradientNumber value={w.n ?? i + 1} className="w-[140px] md:w-[180px] h-auto -mt-2 -mb-2" />
+                <h3 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D]">{w.title}</h3>
+                <div className="w-28 md:w-36 h-[8px] bg-gradient-to-r from-[#e5383b] to-[#ba181b]" />
+                <p className="text-[#4b4b4b] text-[18px] md:text-[20px] leading-snug">{w.text}</p>
+                {whyExtras[i] && (
+                  <p className="text-[#4b4b4b] text-[18px] md:text-[20px] leading-snug whitespace-pre-line">
+                    {whyExtras[i]}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-
-        <div className="p-8 md:p-12 flex flex-col justify-center gap-5">
-          <GradientNumber value={w.n ?? i + 1} className="w-[140px] md:w-[180px] h-auto -mt-2 -mb-2" />
-          <h3 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D]">{w.title}</h3>
-          <div className="w-28 md:w-36 h-[8px] bg-gradient-to-r from-[#e5383b] to-[#ba181b]" />
-          <p className="text-[#4b4b4b] text-[18px] md:text-[20px] leading-snug">{w.text}</p>
-          {whyExtras[i] && (
-            <p className="text-[#4b4b4b] text-[18px] md:text-[20px] leading-snug whitespace-pre-line">
-              {whyExtras[i]}
-            </p>
-          )}
-        </div>
-      </div>
-    ))}
-  </div>
-</Section>
-
+      </Section>
 
       <Section id="directions" className="section--bleed bg-paper">
         {/* Заголовок */}
@@ -378,6 +370,104 @@ export default function Home() {
           ))}
         </div>
       </Section>
+
+      {/* ========== АКЦИИ КЛУБА ========== */}
+      <section id="promos" className="bg-paper py-10 md:py-14">
+        <div className="edge">
+          <div className="rounded-3xl bg-white shadow-soft p-5 md:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h2 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D] leading-tight">
+                АКЦИИ КЛУБА
+              </h2>
+
+              <div className="inline-flex rounded-full border border-ink/10 bg-ink/3 p-1">
+                {[
+                  { key: "all", label: "Все" },
+                  { key: "training", label: "Тренировки" },
+                  { key: "massage", label: "Массаж" },
+                ].map(({ key, label }) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setTrialOpen ? setPromoFilter(key) : setPromoFilter(key)}
+                    className={[
+                      "px-4 py-2 rounded-full text-sm md:text-base font-helvCond transition",
+                      promoFilter === key
+                        ? "bg-scarlet text-white"
+                        : "text-[#161A1D] hover:bg-ink/5",
+                    ].join(" ")}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredPromos.map((p) => (
+                <article
+                  key={p.id}
+                  className="relative rounded-2xl border border-ink/5 bg-white p-4 md:p-5"
+                >
+                  {/* бейдж и категория */}
+                  <div className="flex items-center justify-between">
+                    {p.badge && (
+                      <span className="inline-flex items-center rounded-full bg-scarlet/10 text-scarlet px-3 py-1 text-xs md:text-sm font-helvCond">
+                        {p.badge}
+                      </span>
+                    )}
+                    <span className="text-xs md:text-sm font-helvCond text-[#161A1D]/70">
+                      {p.category === "training" ? "Тренировки" : "Массаж"}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-3 font-bebas text-[20px] md:text-[22px] text-[#161A1D] leading-tight">
+                    {p.title}
+                  </h3>
+                  {p.note && (
+                    <p className="mt-1 font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/85">
+                      {p.note}
+                    </p>
+                  )}
+
+                  {/* CTA-блок */}
+                  <div className="mt-4 flex flex-wrap items-center gap-2">
+                    {p.links?.instagram && (
+                      <a
+                        href={p.links.instagram}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center rounded-full border border-ink/10 px-3 py-2 text-sm font-helvCond hover:bg-ink/5"
+                      >
+                        Instagram
+                      </a>
+                    )}
+                    {p.links?.telegram && (
+                      <a
+                        href={p.links.telegram}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center rounded-full border border-ink/10 px-3 py-2 text-sm font-helvCond hover:bg-ink/5"
+                      >
+                        Telegram
+                      </a>
+                    )}
+
+                    {/* универсальная кнопка «Записаться» */}
+                    <button
+                      type="button"
+                      onClick={() => setTrialOpen(true)}
+                      className="ml-auto inline-flex items-center justify-center rounded-full bg-scarlet hover:bg-scarlet/90 text-white font-bebas tracking-wide px-4 py-2 text-base shadow-md"
+                    >
+                      Записаться
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <Section id="cta">
