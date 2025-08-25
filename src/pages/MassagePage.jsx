@@ -1,5 +1,6 @@
 // src/pages/MassagePage.jsx
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import Section from "../components/Section.jsx";
 import { massageContent as data } from "../data/massageData";
@@ -25,6 +26,84 @@ const Phone = (props) => (
 // единый CTA как класс (используем на button, чтобы открывать модалку)
 const ctaClasses =
   "inline-flex items-center justify-center rounded-full bg-scarlet hover:bg-scarlet/90 text-white font-bebas tracking-wide px-6 py-3 text-lg shadow-md";
+
+
+function CornerStickyCTA({
+  visible,
+  onAction,
+  onClose,
+  price = "360 000 сум",
+}) {
+  // уважение prefers-reduced-motion
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const handler = (e) => setReduced(e.matches);
+    mq.addEventListener?.("change", handler);
+    return () => mq.removeEventListener?.("change", handler);
+  }, []);
+
+  return (
+    <div
+      aria-live="polite"
+      className={[
+        "fixed right-3 bottom-3 sm:right-6 sm:bottom-6 z-40",
+        "transition-all",
+        reduced ? "" : "duration-500",
+        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0 pointer-events-none",
+      ].join(" ")}
+    >
+      <div className="max-w-[360px] w-[92vw] sm:w-[360px] rounded-2xl shadow-xl border border-ink/10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+        <div className="p-4">
+          <p className="font-bebas text-[20px] leading-tight text-[#161A1D]">
+            Да, запишитесь на пробный общий массаж{" "}
+            <span className="text-scarlet">всего за {price}</span>
+          </p>
+          <div className="mt-3 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={onAction}
+              className="flex-1 inline-flex items-center justify-center rounded-full bg-scarlet hover:bg-scarlet/90 text-white font-bebas tracking-wide px-5 py-2.5 text-lg shadow-md"
+            >
+              Записаться
+            </button>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Скрыть предложение"
+              className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-[#161A1D]/70 hover:bg-ink/5"
+              title="Скрыть"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+  const [ctaVisible, setCtaVisible] = useState(false);
+
+  useEffect(() => {
+    // не показываем, если недавно скрывал
+    const key = "cta_massage_corner_dismissed_until";
+    const until = Number(localStorage.getItem(key) || 0);
+    const now = Date.now();
+    if (now < until) return;
+
+    const t = setTimeout(() => setCtaVisible(true), 8000); // показать через 8с
+    return () => clearTimeout(t);
+  }, []);
+
+  const handleHideCornerCTA = () => {
+    setCtaVisible(false);
+    // не беспокоить 7 дней
+    const sevenDays = 7 * 24 * 60 * 60 * 1000;
+    localStorage.setItem("cta_massage_corner_dismissed_until", String(Date.now() + sevenDays));
+  };
+
 
 export default function MassagePage() {
   const bookingHref = useMemo(
@@ -467,6 +546,16 @@ export default function MassagePage() {
 
       {/* ===== МОДАЛКА (массаж) ===== */}
       <MassageModal open={modalOpen} onClose={() => setModalOpen(false)} />
+              <CornerStickyCTA
+        visible={ctaVisible}
+        onAction={() => {
+          setModalOpen(true);
+          setCtaVisible(false);
+        }}
+        onClose={handleHideCornerCTA}
+        price="360 000 сум"
+      />
+
     </>
   );
 }
