@@ -1,6 +1,5 @@
 // src/pages/MassagePage.jsx
 import { useMemo, useState, useEffect } from "react";
-
 import { Link } from "react-router-dom";
 import Section from "../components/Section.jsx";
 import { massageContent as data } from "../data/massageData";
@@ -27,12 +26,12 @@ const Phone = (props) => (
 const ctaClasses =
   "inline-flex items-center justify-center rounded-full bg-scarlet hover:bg-scarlet/90 text-white font-bebas tracking-wide px-6 py-3 text-lg shadow-md";
 
-
+// ===== всплывающий оффер в углу =====
 function CornerStickyCTA({
   visible,
   onAction,
   onClose,
-  price = "360 000 сум",
+  price = "360 000 сум",
 }) {
   // уважение prefers-reduced-motion
   const [reduced, setReduced] = useState(false);
@@ -51,13 +50,15 @@ function CornerStickyCTA({
         "fixed right-3 bottom-3 sm:right-6 sm:bottom-6 z-40",
         "transition-all",
         reduced ? "" : "duration-500",
-        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0 pointer-events-none",
+        visible
+          ? "translate-y-0 opacity-100"
+          : "translate-y-4 opacity-0 pointer-events-none",
       ].join(" ")}
     >
       <div className="max-w-[360px] w-[92vw] sm:w-[360px] rounded-2xl shadow-xl border border-ink/10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
         <div className="p-4">
           <p className="font-bebas text-[20px] leading-tight text-[#161A1D]">
-            Да, запишитесь на пробный общий массаж{" "}
+            Запишитесь на пробный общий массаж{" "}
             <span className="text-scarlet">всего за {price}</span>
           </p>
           <div className="mt-3 flex items-center gap-2">
@@ -84,6 +85,15 @@ function CornerStickyCTA({
   );
 }
 
+export default function MassagePage() {
+  const bookingHref = useMemo(
+    () => data.bookingLink || `tel:${data.phones?.[0]?.replace(/\s/g, "")}`,
+    []
+  );
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // --- Состояние попапа + логика показа ---
   const [ctaVisible, setCtaVisible] = useState(false);
 
   useEffect(() => {
@@ -101,17 +111,11 @@ function CornerStickyCTA({
     setCtaVisible(false);
     // не беспокоить 7 дней
     const sevenDays = 7 * 24 * 60 * 60 * 1000;
-    localStorage.setItem("cta_massage_corner_dismissed_until", String(Date.now() + sevenDays));
+    localStorage.setItem(
+      "cta_massage_corner_dismissed_until",
+      String(Date.now() + sevenDays)
+    );
   };
-
-
-export default function MassagePage() {
-  const bookingHref = useMemo(
-    () => data.bookingLink || `tel:${data.phones?.[0]?.replace(/\s/g, "")}`,
-    []
-  );
-
-  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
@@ -145,7 +149,9 @@ export default function MassagePage() {
               >
                 {/* хлебные крошки */}
                 <nav className="text-paper/80 text-xs md:text-sm font-helvCond mb-1">
-                  <Link to="/" className="hover:underline">Главная</Link>
+                  <Link to="/" className="hover:underline">
+                    Главная
+                  </Link>
                   <span className="opacity-70 mx-2">/</span>
                   <span className="opacity-90">Массаж</span>
                 </nav>
@@ -260,7 +266,10 @@ export default function MassagePage() {
         <div className="bg-white rounded-2xl p-6 md:p-10 shadow-soft">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {data.benefits.map((b, i) => (
-              <article key={i} className="rounded-2xl overflow-hidden border border-ink/5">
+              <article
+                key={i}
+                className="rounded-2xl overflow-hidden border border-ink/5"
+              >
                 <div className="relative h-44 md:h-52">
                   <img
                     src={b.image}
@@ -285,137 +294,178 @@ export default function MassagePage() {
           </div>
         </div>
       </Section>
-{/* ================== Прайс ================== */}
-<Section className="bg-paper" id="pricing">
-  <div className="flex items-start justify-between gap-4 mb-4">
-    <h2 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D] leading-tight">
-      ПРАЙС НА УСЛУГИ
-    </h2>
 
-  </div>
+      {/* ================== Прайс ================== */}
+      <Section className="bg-paper" id="pricing">
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <h2 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D] leading-tight">
+            ПРАЙС НА УСЛУГИ
+          </h2>
+        </div>
 
-  {/* заметка + CTA */}
-  <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mb-6">
-    <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
-      {data.pricing?.note}{" "}
-      <a href={`tel:${data.phones?.[0]?.replace(/\s/g,"")}`} className="underline decoration-ink/30 underline-offset-2 hover:decoration-ink">
-        {data.phones?.[0]}
-      </a>{" "}
-      или{" "}
-      <button type="button" onClick={() => setModalOpen(true)} className="underline decoration-ink/30 underline-offset-2 hover:decoration-ink">
-        оставьте заявку
-      </button>
-      .
-    </p>
-  </div>
+        {/* заметка + CTA */}
+        <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mb-6">
+          <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+            {data.pricing?.note}{" "}
+            <a
+              href={`tel:${data.phones?.[0]?.replace(/\s/g, "")}`}
+              className="underline decoration-ink/30 underline-offset-2 hover:decoration-ink"
+            >
+              {data.phones?.[0]}
+            </a>{" "}
+            или{" "}
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="underline decoration-ink/30 underline-offset-2 hover:decoration-ink"
+            >
+              оставьте заявку
+            </button>
+            .
+          </p>
+        </div>
 
-  {/* Сервисы */}
-  <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mb-6">
-    <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
-      {data.pricing?.servicesTitle}
-    </h3>
-    <div className="overflow-x-auto">
-      <table className="min-w-[720px] w-full border-separate border-spacing-y-2">
-        <thead>
-          <tr className="text-left font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/70">
-            <th className="py-2 px-3 rounded-l-lg bg-ink/5">Услуга</th>
-            <th className="py-2 px-3 bg-ink/5">Длительность</th>
-            <th className="py-2 px-3 bg-ink/5">Мастер</th>
-            <th className="py-2 px-3 rounded-r-lg bg-ink/5">Топ-мастер</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.pricing?.services?.map((s, idx) => (
-            <tr key={idx} className="bg-ink/3">
-              <td className="py-3 px-3 rounded-l-lg font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{s.name}</td>
-              <td className="py-3 px-3 font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{s.duration || "—"}</td>
-              <td className="py-3 px-3 font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{s.price ? `${s.price} сум` : "—"}</td>
-              <td className="py-3 px-3 rounded-r-lg font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{s.topPrice ? `${s.topPrice} сум` : "—"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
+        {/* Сервисы */}
+        <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mb-6">
+          <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
+            {data.pricing?.servicesTitle}
+          </h3>
+          <div className="overflow-x-auto">
+            <table className="min-w-[720px] w-full border-separate border-spacing-y-2">
+              <thead>
+                <tr className="text-left font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/70">
+                  <th className="py-2 px-3 rounded-l-lg bg-ink/5">Услуга</th>
+                  <th className="py-2 px-3 bg-ink/5">Длительность</th>
+                  <th className="py-2 px-3 bg-ink/5">Мастер</th>
+                  <th className="py-2 px-3 rounded-r-lg bg-ink/5">Топ-мастер</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.pricing?.services?.map((s, idx) => (
+                  <tr key={idx} className="bg-ink/3">
+                    <td className="py-3 px-3 rounded-l-lg font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+                      {s.name}
+                    </td>
+                    <td className="py-3 px-3 font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+                      {s.duration || "—"}
+                    </td>
+                    <td className="py-3 px-3 font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+                      {s.price ? `${s.price} сум` : "—"}
+                    </td>
+                    <td className="py-3 px-3 rounded-r-lg font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+                      {s.topPrice ? `${s.topPrice} сум` : "—"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-  {/* SPA пакеты */}
-  <div className="grid gap-4 md:grid-cols-2">
-    {/* Обычные SPA */}
-    <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft">
-      <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
-        {data.pricing?.spaTitle}
-      </h3>
-      <ul className="space-y-3">
-        {data.pricing?.spa?.map((p, i) => (
-          <li key={i} className="rounded-xl border border-ink/5 p-3">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="font-bebas text-[20px] md:text-[22px] text-[#161A1D] leading-none">{p.name}</p>
-                <p className="mt-1 font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/85">{p.includes}</p>
-              </div>
-              <div className="text-right">
-                <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{p.price} сум</p>
-                <p className="text-sm text-[#161A1D]/70 mt-0.5">{p.duration}</p>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+        {/* SPA пакеты */}
+        <div className="grid gap-4 md:grid-cols-2">
+          {/* Обычные SPA */}
+          <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft">
+            <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
+              {data.pricing?.spaTitle}
+            </h3>
+            <ul className="space-y-3">
+              {data.pricing?.spa?.map((p, i) => (
+                <li key={i} className="rounded-xl border border-ink/5 p-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="font-bebas text-[20px] md:text-[22px] text-[#161A1D] leading-none">
+                        {p.name}
+                      </p>
+                      <p className="mt-1 font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/85">
+                        {p.includes}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+                        {p.price} сум
+                      </p>
+                      <p className="text-sm text-[#161A1D]/70 mt-0.5">
+                        {p.duration}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-    {/* Премиум SPA */}
-    <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft">
-      <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
-        {data.pricing?.premiumTitle}
-      </h3>
-      <ul className="space-y-3">
-        {data.pricing?.premium?.map((p, i) => (
-          <li key={i} className="rounded-xl border border-ink/5 p-3">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="font-bebas text-[20px] md:text-[22px] text-[#161A1D] leading-none">{p.name}</p>
-                <p className="mt-1 font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/85">{p.includes}</p>
-              </div>
-              <div className="text-right">
-                <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{p.price} сум</p>
-                <p className="text-sm text-[#161A1D]/70 mt-0.5">{p.duration}</p>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
+          {/* Премиум SPA */}
+          <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft">
+            <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
+              {data.pricing?.premiumTitle}
+            </h3>
+            <ul className="space-y-3">
+              {data.pricing?.premium?.map((p, i) => (
+                <li key={i} className="rounded-xl border border-ink/5 p-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="font-bebas text-[20px] md:text-[22px] text-[#161A1D] leading-none">
+                        {p.name}
+                      </p>
+                      <p className="mt-1 font-helvCond text-[16px] md:text-[18px] text-[#161A1D]/85">
+                        {p.includes}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+                        {p.price} сум
+                      </p>
+                      <p className="text-sm text-[#161A1D]/70 mt-0.5">
+                        {p.duration}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-  {/* Аппаратные процедуры */}
-  <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mt-6">
-    <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
-      {data.pricing?.hardwareTitle}
-    </h3>
-    <ul className="grid gap-2 sm:grid-cols-2">
-      {data.pricing?.hardware?.map((h, i) => (
-        <li key={i} className="flex items-center justify-between rounded-xl border border-ink/5 px-3 py-2">
-          <span className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{h.name}</span>
-          <span className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">{h.price} сум</span>
-        </li>
-      ))}
-    </ul>
-  </div>
+        {/* Аппаратные процедуры */}
+        <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft mt-6">
+          <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">
+            {data.pricing?.hardwareTitle}
+          </h3>
+          <ul className="grid gap-2 sm:grid-cols-2">
+            {data.pricing?.hardware?.map((h, i) => (
+              <li
+                key={i}
+                className="flex items-center justify-between rounded-xl border border-ink/5 px-3 py-2"
+              >
+                <span className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+                  {h.name}
+                </span>
+                <span className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]">
+                  {h.price} сум
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-  {/* нижний CTA */}
-  <div className="mt-6 flex flex-wrap items-center gap-3">
-    <button type="button" onClick={() => setModalOpen(true)} className={ctaClasses}>
-      Оставить заявку
-    </button>
-    <a
-      href={`tel:${data.phones?.[0]?.replace(/\s/g,"")}`}
-      className="inline-flex items-center justify-center rounded-full border border-scarlet text-scarlet hover:bg-scarlet/5 font-bebas tracking-wide px-6 py-3 text-lg"
-    >
-      Позвонить {data.phones?.[0]}
-    </a>
-
-  </div>
-</Section>
+        {/* нижний CTA */}
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setModalOpen(true)}
+            className={ctaClasses}
+          >
+            Оставить заявку
+          </button>
+          <a
+            href={`tel:${data.phones?.[0]?.replace(/\s/g, "")}`}
+            className="inline-flex items-center justify-center rounded-full border border-scarlet text-scarlet hover:bg-scarlet/5 font-bebas tracking-wide px-6 py-3 text-lg"
+          >
+            Позвонить {data.phones?.[0]}
+          </a>
+        </div>
+      </Section>
 
       {/* ================== Специалисты ================== */}
       <Section className="bg-paper">
@@ -433,18 +483,17 @@ export default function MassagePage() {
                   className="h-[112px] w-[112px] rounded-xl object-cover"
                   loading="lazy"
                 />
- <div>
-  <h3 className="font-bebas text-[22px] text-[#161A1D] leading-none">
-    {s.name}
-  </h3>
-  <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]/90">
-    {s.role}
-  </p>
-  <p className="mt-2 font-helvCond text-[16px] text-[#161A1D]/80">
-    {s.description}
-  </p>
-</div>
-
+                <div>
+                  <h3 className="font-bebas text-[22px] text-[#161A1D] leading-none">
+                    {s.name}
+                  </h3>
+                  <p className="font-helvCond text-[18px] md:text-[20px] text-[#161A1D]/90">
+                    {s.role}
+                  </p>
+                  <p className="mt-2 font-helvCond text-[16px] text-[#161A1D]/80">
+                    {s.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
@@ -459,7 +508,10 @@ export default function MassagePage() {
 
         <div className="grid gap-4 md:grid-cols-2">
           {data.studios.map((st, i) => (
-            <article key={i} className="bg-white rounded-2xl overflow-hidden shadow-soft">
+            <article
+              key={i}
+              className="bg-white rounded-2xl overflow-hidden shadow-soft"
+            >
               <div className="relative h-48">
                 <img
                   src={st.photo}
@@ -490,7 +542,9 @@ export default function MassagePage() {
                   </span>
                   <span className="inline-flex items-center gap-1">
                     <Phone className="h-4 w-4 fill-current" />
-                    <a href={`tel:${st.phone.replace(/\s/g, "")}`}>{st.phone}</a>
+                    <a href={`tel:${st.phone.replace(/\s/g, "")}`}>
+                      {st.phone}
+                    </a>
                   </span>
                 </div>
 
@@ -546,16 +600,17 @@ export default function MassagePage() {
 
       {/* ===== МОДАЛКА (массаж) ===== */}
       <MassageModal open={modalOpen} onClose={() => setModalOpen(false)} />
-              <CornerStickyCTA
+
+      {/* ===== Угловой попап-оффер ===== */}
+      <CornerStickyCTA
         visible={ctaVisible}
         onAction={() => {
           setModalOpen(true);
           setCtaVisible(false);
         }}
         onClose={handleHideCornerCTA}
-        price="360 000 сум"
+        price="360 000 сум"
       />
-
     </>
   );
 }
