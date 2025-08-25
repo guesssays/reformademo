@@ -34,7 +34,7 @@ export const aboutData = {
 
   teamTitle: "НАША КОМАНДА",
 team: [
-  { name: "Екатерина", role: "Администратор", photo: "/images/about/team-1.jpg" },
+  { name: "Анастасия", role: "Администратор", photo: "/images/about/team-1.jpg" },
   { name: "Барно", role: "Тренер по хатха-йоге и йоге для беременных", photo: "/images/about/team-2.jpg" },
   { name: "Арина", role: "Тренер по фитнесу и стретчингу", photo: "/images/about/team-3.jpg" },
   { name: "Камила", role: "Тренер по тверку", photo: "/images/about/team-4.jpg" },
@@ -50,6 +50,8 @@ team: [
   { name: "Феруза", role: "Массажист", photo: "/images/about/team-14.jpg" },
   { name: "Фарангиз", role: "Тренер по фитнесу, стретчингу и джампинг фитнесу", photo: "/images/about/team-15.jpg" },
   { name: "Наргиза", role: "Тренер по фитнесу", photo: "/images/about/team-16.jpg" },
+  { name: "Радмила", role: "Администратор", photo: "/images/about/team-17.jpg" },
+  { name: "Виктория", role: "Администратор", photo: "/images/about/team-18.jpg" },
 ],
 
 };
