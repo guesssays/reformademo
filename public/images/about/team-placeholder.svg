@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-labelledby="title desc">
+  <title id="title">Team photo placeholder</title>
+  <desc id="desc">Neutral placeholder avatar for team members without uploaded photos.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f3efe8" />
+      <stop offset="100%" stop-color="#e7ddd1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)" rx="48" />
+  <circle cx="400" cy="285" r="118" fill="#d2c1ae" />
+  <path
+    d="M196 665c24-118 114-193 204-193s180 75 204 193"
+    fill="#d2c1ae"
+    stroke="#c2af9a"
+    stroke-width="16"
+    stroke-linecap="round"
+  />
+  <circle cx="400" cy="285" r="118" fill="none" stroke="#c2af9a" stroke-width="16" />
+  <path
+    d="M180 678h440"
+    fill="none"
+    stroke="#b04a3c"
+    stroke-width="18"
+    stroke-linecap="round"
+    opacity="0.9"
+  />
+  <text
+    x="400"
+    y="730"
+    fill="#6b5f53"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="42"
+    font-weight="700"
+    letter-spacing="8"
+    text-anchor="middle"
+  >
+    PHOTO
+  </text>
+</svg>
