@@ -230,7 +230,7 @@ const InfoCarousel = memo(function InfoCarousel({ images = [] }) {
 
 /* ===================== СТРАНИЦА ===================== */
 export default function StudioPage() {
-  const { id } = useParams(); // st-aly | st-alm
+  const { id } = useParams(); // st-aly
   const { hash } = useLocation();
   const base = studiosBase.find((s) => s.id === id);
   const data = studiosPageData[id];

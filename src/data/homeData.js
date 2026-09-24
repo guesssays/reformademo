@@ -81,13 +81,6 @@ export const studios = [
     phone: "+998933775697",
     phone2: "+998951990800",
     img: "/images/st-1.jpg"
-  },
-  {
-    id: "st-alm",
-    short: "АЛИМКЕНТ",
-    title: "Яшнабадский район, улица Алимкент 33",
-    phone: "+998970365697",
-    img: "/images/st-2.jpg"
   }
 ]
 

@@ -6,7 +6,6 @@ import { asAvif } from "../lib/avif.js"; // ← AVIF helper
 
 // короткие названия для модалки
 const modalStudios = [
-  { id: "st-alm", label: "Алимкент" },
   { id: "st-aly", label: "Алайский" },
 ];
 

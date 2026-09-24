@@ -87,23 +87,6 @@ export default function PricesPage() {
     ],
   };
 
-  /* ===== ДАННЫЕ: АЛИМКЕНТ — ЦЕНЫ ===== */
-  const alim = {
-    training_08_19: [{ name: "12 занятий (08:00–19:00)", value: 900_000 }],
-    training_19_21: [{ name: "12 занятий (19:00–21:00)", value: 1_000_000 }],
-    jumping: [{ name: "Джампинг фитнес — 12 занятий", value: 1_100_000 }],
-    extras: [
-      { name: "Пробное занятие", value: 70_000 },
-      { name: "Разовое занятие", value: 130_000 },
-      { name: "Микс абонемент — 12 занятий (неограниченное количество направлений)", value: 1_200_000 },
-    ],
-    oneDirection: [
-      { name: "12 месяцев (1 направление) — бесплатная заморозка 4 недели", value: 7_740_000, monthly: 645_000, months: 12 },
-      { name: "6 месяцев (1 направление) — бесплатная заморозка 2 недели", value: 4_480_000, monthly: 745_000, months: 6 },
-      { name: "3 месяца (1 направление) — бесплатная заморозка 1 неделя", value: 2_535_000, monthly: 845_000, months: 3 },
-    ],
-  };
-
   /* ===== РАСПИСАНИЕ ===== */
   const scheduleAly = {
     "ЗАЛ №1": {
@@ -171,15 +154,6 @@ export default function PricesPage() {
       ],
       "СУББОТА": ["09:00–10:00 — Фитнес микс", "10:00–11:00 — Фитнес микс", "19:00–20:00 — Фитнес микс", "20:00–21:00 — Фитнес + пилатес"],
     },
-  };
-
-  const scheduleAlm = {
-    "ПОНЕДЕЛЬНИК": ["10:00–11:00 — Фитнес микс", "15:00–16:00 — Фитнес микс", "17:30–18:30 — Похудейка", "18:30–19:30 — Фитнес + стретчинг", "19:30–20:30 — Похудейка", "20:30–21:30 — Стретчинг"],
-    "ВТОРНИК": ["08:00–09:00 — Фитнес на батутах", "09:00–10:00 — Стретчинг", "18:15–19:30 — Йогатерапия", "19:30–20:30 — Похудейка", "20:30–21:30 — Фитнес + Стретчинг"],
-    "СРЕДА": ["10:00–11:00 — Фитнес микс", "15:00–16:00 — Фитнес микс", "17:30–18:30 — Похудейка", "18:30–19:30 — Фитнес + стретчинг", "19:30–20:30 — Похудейка", "20:30–21:30 — Стретчинг"],
-    "ЧЕТВЕРГ": ["08:00–09:00 — Фитнес на батутах", "09:00–10:00 — Стретчинг", "18:15–19:30 — Йогатерапия", "19:30–20:30 — Похудейка", "20:30–21:30 — Фитнес + Стретчинг"],
-    "ПЯТНИЦА": ["10:00–11:00 — Фитнес микс", "15:00–16:00 — Фитнес микс", "17:30–18:30 — Похудейка", "18:30–19:30 — Фитнес + стретчинг", "19:30–20:30 — Похудейка", "20:30–21:30 — Стретчинг"],
-    "СУББОТА": ["08:00–09:00 — Фитнес на батутах", "09:00–10:00 — Стретчинг", "19:30–20:30 — Похудейка", "20:30–21:30 — Фитнес + Стретчинг"],
   };
 
   return (
@@ -253,44 +227,6 @@ export default function PricesPage() {
           <ScheduleBlock title="ЗАЛ №1" scheduleObj={scheduleAly["ЗАЛ №1"]} />
           <ScheduleBlock title="ЗАЛ №2" scheduleObj={scheduleAly["ЗАЛ №2"]} />
         </div>
-      </Section>
-
-      {/* АЛИМКЕНТ — ЦЕНЫ */}
-      <Section id="alimkent" className="bg-paper scroll-mt-24">
-        <h2 className="font-bebas text-[28px] md:text-[36px] text-[#161A1D] leading-tight mb-4">Студия «Алимкент»</h2>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="bg-white rounded-2xl p-5 shadow-soft">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Тренировки (08:00–19:00)</h3>
-            {alim.training_08_19.map((i) => <PriceRow key={i.name} {...i} />)}
-          </div>
-
-          <div className="bg-white rounded-2xl p-5 shadow-soft">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Тренировки (19:00–21:00)</h3>
-            {alim.training_19_21.map((i) => <PriceRow key={i.name} {...i} />)}
-          </div>
-
-          <div className="bg-white rounded-2xl p-5 shadow-soft">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Джампинг фитнес</h3>
-            {alim.jumping.map((i) => <PriceRow key={i.name} {...i} />)}
-          </div>
-
-          <div className="bg-white rounded-2xl p-5 shadow-soft md:col-span-2">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Дополнительно</h3>
-            {alim.extras.map((i) => <PriceRow key={i.name} {...i} />)}
-          </div>
-
-          <div className="bg-white rounded-2xl p-5 shadow-soft md:col-span-2">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Абонементы на 1 направление</h3>
-            {alim.oneDirection.map((i) => <PriceRow key={i.name} {...i} />)}
-          </div>
-        </div>
-      </Section>
-
-      {/* АЛИМКЕНТ — РАСПИСАНИЕ */}
-      <Section id="alimkent-schedule" className="bg-paper">
-        <h2 className="font-bebas text-[26px] md:text-[34px] text-[#161A1D] leading-tight mb-4">Расписание студии «Алимкент»</h2>
-        <ScheduleBlock title="График по дням" scheduleObj={scheduleAlm} />
       </Section>
     </>
   );

@@ -174,12 +174,6 @@ export default function Home() {
                   {/* ссылки на студии */}
                   <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-6">
             
-                    <Link
-                      to="/studios/st-alm"
-                      className="inline-block underline decoration-white/60 underline-offset-4 hover:decoration-white text-white/90 font-helvCond text-lg"
-                    >
-                      Расписание и цены Алимкент
-                    </Link>
                             <Link
                       to="/studios/st-aly"
                       className="inline-block underline decoration-white/60 underline-offset-4 hover:decoration-white text-white/90 font-helvCond text-lg"

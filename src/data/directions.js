@@ -31,7 +31,7 @@ export const directionsData = [
       { n: 2, title: "Выбрать форму", text: "Удобная спортивная одежда без жестких швов." },
       { n: 3, title: "Настроиться", text: "Приходите за 10–15 минут до тренировки, возьмите воду." }
     ],
-    studios: ["st-aly", "st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/stretching/g1.jpg",
       "/images/directions/stretching/g2.jpg",
@@ -75,7 +75,7 @@ export const directionsData = [
       { n: 2, title: "Обувь", text: "Кроссовки с фиксацией стопы." },
       { n: 3, title: "Вода", text: "Бутылка воды и полотенце." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/fitness-mix/g1.jpg",
       "/images/directions/fitness-mix/g2.jpg",
@@ -118,7 +118,7 @@ export const directionsData = [
       { n: 2, title: "Обувь", text: "Кроссовки/кеды с мягкой подошвой." },
       { n: 3, title: "Вода", text: "Берите воду на тренировку." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/twerk/g1.jpg",
       "/images/directions/twerk/g2.jpg",
@@ -160,7 +160,7 @@ export const directionsData = [
       { n: 2, title: "Разминка", text: "Приходите заранее." },
       { n: 3, title: "Вода", text: "Пейте до и после." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/trampoline/g1.jpg",
       "/images/directions/trampoline/g2.jpg",
@@ -202,7 +202,7 @@ export const directionsData = [
       { n: 2, title: "Форма", text: "Удобная танцевальная одежда." },
       { n: 3, title: "Видео", text: "Снимайте прогресс — это мотивирует." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/k-pop/g1.jpg",
       "/images/directions/k-pop/g2.jpg",
@@ -245,7 +245,7 @@ export const directionsData = [
       { n: 2, title: "Одежда", text: "Эластичная, не сковывающая." },
       { n: 3, title: "Питание", text: "Лёгкий перекус за 1–2 часа." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/yoga/g1.jpg",
       "/images/directions/yoga/g2.jpg",
@@ -287,7 +287,7 @@ export const directionsData = [
       { n: 2, title: "Темп", text: "Делаем паузы, слушаем тело." },
       { n: 3, title: "Атрибуты", text: "Болстер/подушки при необходимости." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/yoga-pregnant/g1.jpg",
       "/images/directions/yoga-pregnant/g2.jpg",
@@ -329,7 +329,7 @@ export const directionsData = [
 
       { n: 2, title: "Режим", text: "Лёгкий перекус до практики." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/yoga-women/g1.jpg",
       "/images/directions/yoga-women/g2.jpg",
@@ -373,7 +373,7 @@ export const directionsData = [
       { n: 2, title: "Фокус", text: "Качество важнее количества." },
       { n: 3, title: "Регулярность", text: "Минимум 2 раза в неделю." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/pilates/g1.jpg",
       "/images/directions/pilates/g2.jpg",
@@ -415,7 +415,7 @@ export const directionsData = [
       { n: 2, title: "Темп", text: "Делаем паузы по необходимости." },
       { n: 3, title: "Регулярность", text: "Мягкая, но регулярная практика." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/yoga-therapy/g1.jpg",
       "/images/directions/yoga-therapy/g2.jpg",
@@ -458,7 +458,7 @@ export const directionsData = [
       { n: 2, title: "Питание", text: "Лёгкий перекус за 2 часа." },
       { n: 3, title: "Регулярность", text: "2 раза в неделю и больше." }
     ],
-    studios: ["st-aly","st-alm"],
+    studios: ["st-aly"],
     gallery: [
       "/images/directions/aerial-stretch/g1.jpg",
       "/images/directions/aerial-stretch/g2.jpg",
@@ -510,48 +510,6 @@ export const directionsData = [
     title: "Стрип пластика в ReForma",
     description: "Танцевальное направление для пластики, уверенности и женственности.",
     keywords: "стрип пластика ташкент, танцы для девушек"
-  }
-},
-{
-  slug: "dance-mix-fitness",
-  title: "Дэнс микс + фитнес",
-  tag: "MOVEMENT",
-  hero: {
-    image: "/images/directions/dance-mix-fitness/hero.jpg",
-    title: "Дэнс микс + фитнес",
-    subtitle: "Танцевальные связки и функциональная нагрузка в одном формате",
-    ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
-    ctaHref: "tel:+998970365697"
-  },
-  intro: {
-    imageLeft: "/images/directions/dance-mix-fitness/intro.jpg",
-    title: "Энергия танца и польза фитнеса",
-    text: "Комбинируем танцевальные элементы, кардио и упражнения на всё тело для тонуса и настроения."
-  },
-  benefitsBlock: {
-    title: "Основные преимущества Дэнс микс + фитнес",
-    items: [
-      { title: "Кардио", text: "Активный формат помогает расходовать калории." },
-      { title: "Настроение", text: "Музыка и ритм делают тренировку яркой." },
-      { title: "Тонус", text: "Подключаются мышцы всего тела." },
-      { title: "Доступность", text: "Подходит для начинающих и продолжающих." }
-    ]
-  },
-  prepareSteps: [
-    { n: 1, title: "Одежда", text: "Выбирайте удобную спортивную форму." },
-    { n: 2, title: "Обувь", text: "Лёгкие кроссовки с хорошей фиксацией." },
-    { n: 3, title: "Вода", text: "Возьмите воду на занятие." }
-  ],
-  studios: ["st-alm"],
-  gallery: [
-    "/images/directions/dance-mix-fitness/g1.jpg",
-    "/images/directions/dance-mix-fitness/g2.jpg",
-    "/images/directions/dance-mix-fitness/g3.jpg"
-  ],
-  seo: {
-    title: "Дэнс микс + фитнес в ReForma",
-    description: "Танцевально-фитнес формат для энергии, тонуса и хорошего настроения.",
-    keywords: "дэнс микс фитнес ташкент, танцевальный фитнес"
   }
 }
 ];

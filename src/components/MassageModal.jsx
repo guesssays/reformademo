@@ -7,12 +7,11 @@ import { asAvif } from "../lib/avif.js"; // ← AVIF helper
 export default function MassageModal({ open, onClose }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("+998 ");
-  const [studio, setStudio] = useState("st-alm");
+  const [studio, setStudio] = useState("st-aly");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
   const modalStudios = [
-    { id: "st-alm", label: "Алимкент" },
     { id: "st-aly", label: "Алайский" },
   ];
 

@@ -86,7 +86,6 @@ export default function Footer() {
               <div className="text-base md:text-lg font-bebas text-white/60 mb-3">Контакты</div>
               <div className="text-sm text-white/80 space-y-2">
                 <div>+998 93 377 56 97</div>
-                <div>+998 97 036 56 97</div>
               </div>
 
               <div className="mt-4 flex items-center gap-3">

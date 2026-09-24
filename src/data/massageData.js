@@ -2,7 +2,7 @@
 export const massageContent = {
   studioName: "ReForma",
   bookingLink: "https://wa.me/998933776597?text=Здравствуйте!%20Хочу%20записаться%20на%20массаж",
-  phones: ["+998 97 036 56 97"],
+  phones: ["+998 93 377 56 97"],
   hero: {
     title: "МАССАЖ В",
     subtitle: "Массаж — это бережное лечение через прикосновение.",
@@ -86,13 +86,7 @@ specialists: [
       photo: "/images/st-1.jpg",
       mapLink: "https://www.google.com/maps/place/Reforma+fitness/@41.3204968,69.2823763,17z/data=!4m14!1m7!3m6!1s0x38aef570b0ae0081:0x33f9142c2a58e58!2sReforma+fitness!8m2!3d41.3204969!4d69.2872472!16s%2Fg%2F11g0hm1cs0!3m5!1s0x38aef570b0ae0081:0x33f9142c2a58e58!8m2!3d41.3204969!4d69.2872472!16s%2Fg%2F11g0hm1cs0?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D",
     },
-    {
-      name: "Яшнабадский район",
-      address: "улица Алимкент 33",
-      phone: "+998 97 036 56 97",
-      photo: "/images/st-2.jpg",
-      mapLink: "https://www.google.com/maps/place/Alimkent+ko'chasi+33,+Тоshkent,+Toshkent,+Узбекистан/@41.2849495,69.3275546,15.46z/data=!4m5!3m4!1s0x38aef578f0b4568d:0xf30cbce1f1407c1c!8m2!3d41.2848108!4d69.333513?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D",
-    },
+    
   ],
   trial: {
     title: "Запишись на пробный сеанс массажа",
