@@ -41,7 +41,7 @@ export const advantages = [
 export const why = [
   { n: "02", title: "Гибкая система абонементов", text: "Различные форматы: 8 и 12 занятий, VIP-абонементы на 1/3/6/12 месяцев, индивидуальные и разовые посещения.", img: "/images/why-5.png" },
 
-  { n: "03", title: "Система лояльности", text: "15% скидка после 3 месяцев посещений.", img: "/images/why-2.png" }, // добавь why-5.jpg
+  { n: "03", title: "Система лояльности", text: "15% скидка (статус Gold) после 3 месяцев посещений.", img: "/images/why-2.png" }, // добавь why-5.jpg
 
   { n: "04", title: "Большой выбор занятий", text: "Силовые, функциональные, танцевальные и растяжка — более 15 направлений, удобная онлайн-запись.", img: "/images/why-1.jpg" },
 
@@ -56,6 +56,7 @@ export const directions = [
   { slug: "twerk",                tag: "MOVEMENT", title: "Тверк",                    img: "/images/directions/twerk.png" },
   { slug: "trampoline-fitness",   tag: "MOVEMENT", title: "Фитнес на батутах",        img: "/images/directions/trampoline.png" },
   { slug: "k-pop",                tag: "MOVEMENT", title: "K-pop",                    img: "/images/directions/kpop.png" },
+  { slug: "arabic-dance",         tag: "MOVEMENT", title: "Арабские танцы",           img: "/images/directions/arabic-dance-fitness.png" },
 
   // MINDSET
   { slug: "yoga",          tag: "MINDSET", title: "Йога",                img: "/images/directions/yoga.png" },
@@ -179,7 +180,7 @@ export const promos = [
     id: "tr-6",
     category: "training",
     title: "Система лояльности",
-    note: "15% скидка после 3 месяцев посещений.",
+    note: "15% скидка (статус Gold) после 3 месяцев посещений.",
     badge: "Лояльность",
   },
   {

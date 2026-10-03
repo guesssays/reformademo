@@ -511,5 +511,89 @@ export const directionsData = [
     description: "Танцевальное направление для пластики, уверенности и женственности.",
     keywords: "стрип пластика ташкент, танцы для девушек"
   }
+},
+{
+  slug: "aerial-yoga",
+  title: "Аэройога",
+  tag: "RECOVERY",
+  hero: {
+    image: "/images/directions/aerial-yoga/hero.jpg",
+    title: "Аэройога",
+    subtitle: "Йога в гамаках — лёгкость, баланс и расслабление",
+    ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
+    ctaHref: "tel:+998933775697"
+  },
+  intro: {
+    imageLeft: "/images/directions/aerial-yoga/intro.jpg",
+    title: "Практика, которая снимает нагрузку с позвоночника",
+    text: "Асаны в гамаке помогают мягко вытянуть спину, укрепить мышцы и глубоко расслабиться."
+  },
+  benefitsBlock: {
+    title: "Основные преимущества Аэройоги",
+    items: [
+      { title: "Спина", text: "Мягкое вытяжение и разгрузка позвоночника." },
+      { title: "Сила", text: "Укрепляет мышцы кора, рук и плеч." },
+      { title: "Баланс", text: "Развивает координацию и чувство тела." },
+      { title: "Расслабление", text: "Снимает стресс и напряжение." }
+    ]
+  },
+  prepareSteps: [
+    { n: 1, title: "Форма", text: "Облегающая одежда, закрывающая плечи и колени." },
+    { n: 2, title: "Аксессуары", text: "Снимите украшения и часы." },
+    { n: 3, title: "Питание", text: "Лёгкий перекус за 2 часа до занятия." }
+  ],
+  studios: ["st-aly"],
+  gallery: [
+    "/images/directions/aerial-yoga/g1.jpg",
+    "/images/directions/aerial-yoga/g2.jpg",
+    "/images/directions/aerial-yoga/g3.jpg"
+  ],
+  seo: {
+    title: "Аэройога в ReForma",
+    description: "Йога в гамаках для здоровой спины, силы и расслабления.",
+    keywords: "аэройога ташкент, йога в гамаках"
+  }
+},
+{
+  slug: "arabic-dance",
+  title: "Арабские танцы",
+  tag: "MOVEMENT",
+  hero: {
+    image: "/images/directions/arabic-dance-fitness/hero.jpg",
+    title: "Арабские танцы",
+    subtitle: "Пластика, женственность и хорошее настроение",
+    ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
+    ctaHref: "tel:+998933775697"
+  },
+  intro: {
+    imageLeft: "/images/directions/arabic-dance-fitness/intro.jpg",
+    title: "Танец, который раскрывает женственность",
+    text: "Изучаем базовые движения и связки восточного танца, работаем над пластикой, осанкой и уверенностью в себе."
+  },
+  benefitsBlock: {
+    title: "Основные преимущества Арабских танцев",
+    items: [
+      { title: "Пластика", text: "Мягкость и выразительность движений." },
+      { title: "Осанка", text: "Укрепляет мышцы спины и корпуса." },
+      { title: "Тонус", text: "Прорабатывает мышцы живота и бёдер." },
+      { title: "Настроение", text: "Музыка и танец заряжают энергией." }
+    ]
+  },
+  prepareSteps: [
+    { n: 1, title: "Форма", text: "Удобная одежда, не сковывающая движения." },
+    { n: 2, title: "Аксессуары", text: "Платок на бёдра — по желанию." },
+    { n: 3, title: "Вода", text: "Возьмите воду на занятие." }
+  ],
+  studios: ["st-aly"],
+  gallery: [
+    "/images/directions/arabic-dance-fitness/g1.jpg",
+    "/images/directions/arabic-dance-fitness/g2.jpg",
+    "/images/directions/arabic-dance-fitness/g3.jpg"
+  ],
+  seo: {
+    title: "Арабские танцы в ReForma",
+    description: "Восточные танцы для пластики, осанки и женственности в студии ReForma.",
+    keywords: "арабские танцы ташкент, восточные танцы для женщин"
+  }
 }
 ];
