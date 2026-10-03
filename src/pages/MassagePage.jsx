@@ -304,7 +304,7 @@ export default function MassagePage() {
         </div>
 
         {/* SPA пакеты */}
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className={`grid gap-4 ${data.pricing?.premium?.length ? "md:grid-cols-2" : ""}`}>
           <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft">
             <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">{data.pricing?.spaTitle}</h3>
             <ul className="space-y-3">
@@ -325,6 +325,7 @@ export default function MassagePage() {
             </ul>
           </div>
 
+          {data.pricing?.premium?.length ? (
           <div className="bg-white rounded-2xl p-4 md:p-6 shadow-soft">
             <h3 className="font-bebas text-[22px] md:text-[26px] text-[#161A1D] mb-3">{data.pricing?.premiumTitle}</h3>
             <ul className="space-y-3">
@@ -344,6 +345,7 @@ export default function MassagePage() {
               ))}
             </ul>
           </div>
+          ) : null}
         </div>
 
         {/* Аппаратные процедуры */}

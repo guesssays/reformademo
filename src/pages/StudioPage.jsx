@@ -71,11 +71,25 @@ const ServiceRow = memo(function ServiceRow({ name, duration, price, topPrice })
         {duration}
       </div>
       <div className="font-bebas text-[19px] sm:text-[20px] md:text-[24px] text-[#161A1D] tabular-nums leading-tight">
-        {price ? <span>{price}</span> : <span className="opacity-70">—</span>}
-        {topPrice && (
-          <span className="block sm:inline sm:ml-2 text-ink/70 text-[15px] sm:text-[16px] md:text-[20px] leading-tight">
-            (топ мастер {topPrice})
-          </span>
+        {price ? (
+          <>
+            <span>{price}</span>
+            {topPrice && (
+              <span className="block sm:inline sm:ml-2 text-ink/70 text-[15px] sm:text-[16px] md:text-[20px] leading-tight">
+                (топ мастер {topPrice})
+              </span>
+            )}
+          </>
+        ) : topPrice ? (
+          // услуга только у топ-мастера (например, «Авторский»)
+          <>
+            <span>{topPrice}</span>
+            <span className="block sm:inline sm:ml-2 text-ink/70 text-[15px] sm:text-[16px] md:text-[20px] leading-tight">
+              (топ мастер)
+            </span>
+          </>
+        ) : (
+          <span className="opacity-70">—</span>
         )}
       </div>
     </div>
@@ -500,29 +514,20 @@ export default function StudioPage() {
       {/* ====== ЦЕНЫ: ТРЕНИРОВКИ ====== */}
       {pricing && (
         <Section className="bg-paper">
-          <h2 className="font-bebas text-[32px] md:text-[44px] leading-tight text-[#161A1D] mb-2">
+          <h2
+            className={`font-bebas text-[32px] md:text-[44px] leading-tight text-[#161A1D] ${
+              pricing.note ? "mb-2" : "mb-5"
+            }`}
+          >
             Цены на тренировки
           </h2>
-          <p className="text-ink/80 font-helvCond mb-5">{pricing.note}</p>
+          {pricing.note && <p className="text-ink/80 font-helvCond mb-5">{pricing.note}</p>}
 
           <div className="grid gap-6 md:grid-cols-2">
-            {pricing.fitness?.training_08_19?.length ? (
+            {pricing.fitness?.training?.length ? (
               <div className="bg-white rounded-2xl p-5 shadow-soft">
-                <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">
-                  Тренировки (08:00–19:00)
-                </h3>
-                {pricing.fitness.training_08_19.map((i) => (
-                  <PriceRow key={i.name} {...i} />
-                ))}
-              </div>
-            ) : null}
-
-            {pricing.fitness?.training_19_21?.length ? (
-              <div className="bg-white rounded-2xl p-5 shadow-soft">
-                <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">
-                  Тренировки (19:00–21:00)
-                </h3>
-                {pricing.fitness.training_19_21.map((i) => (
+                <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Тренировки</h3>
+                {pricing.fitness.training.map((i) => (
                   <PriceRow key={i.name} {...i} />
                 ))}
               </div>
@@ -531,7 +536,7 @@ export default function StudioPage() {
             {pricing.fitness?.specials?.length ? (
               <div className="bg-white rounded-2xl p-5 shadow-soft">
                 <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">
-                  Аэройога / Аэростретчинг / Йога для беременных
+                  Аэройога / Аэростретчинг / Тверк / Йога для беременных
                 </h3>
                 {pricing.fitness.specials.map((i) => (
                   <PriceRow key={i.name} {...i} />
@@ -560,7 +565,7 @@ export default function StudioPage() {
             ) : null}
 
             {pricing.fitness?.extras?.length ? (
-              <div className="bg-white rounded-2xl p-5 shadow-soft md:col-span-2">
+              <div className="bg-white rounded-2xl p-5 shadow-soft">
                 <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Дополнительно</h3>
                 {pricing.fitness.extras.map((i) => (
                   <PriceRow key={i.name} {...i} />
@@ -568,12 +573,10 @@ export default function StudioPage() {
               </div>
             ) : null}
 
-            {pricing.fitness?.oneDirection?.length ? (
+            {pricing.fitness?.vip?.length ? (
               <div className="bg-white rounded-2xl p-5 shadow-soft md:col-span-2">
-                <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">
-                  Абонементы на 1 направление
-                </h3>
-                {pricing.fitness.oneDirection.map((i) => (
+                <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">VIP абонементы</h3>
+                {pricing.fitness.vip.map((i) => (
                   <PriceRow key={i.name} {...i} />
                 ))}
               </div>

@@ -1,5 +1,6 @@
 import Section from "../components/Section.jsx";
 import { asAvif } from "../lib/avif.js";
+import { studiosPageData } from "../data/studiosPageData.js";
 
 /** Универсальный helper: AVIF + fallback */
 function AvifPicture({ src, alt = "", className = "", imgProps = {} }) {
@@ -66,95 +67,9 @@ export default function PricesPage() {
   const note =
     "Цены указаны с учётом 10% скидки, которую можно получить при покупке абонемента в течение 7 дней после посещения пробного занятия.";
 
-  /* ===== ДАННЫЕ: АЛАЙСКИЙ — ЦЕНЫ ===== */
-  const alai = {
-    training_08_19: [{ name: "12 занятий (08:00–19:00)", value: 1_100_000 }],
-    training_19_21: [{ name: "12 занятий (19:00–21:00)", value: 1_200_000 }],
-    specials: [
-      { name: "Аэройога / Аэростретчинг / Йога для беременных — 12 занятий", value: 1_250_000 },
-      { name: "Аэройога / Аэростретчинг / Йога для беременных — 8 занятий", value: 990_000 },
-    ],
-    kpop: [{ name: "K-pop — 12 занятий", value: 600_000 }],
-    extras: [
-      { name: "Пробное занятие", value: 90_000 },
-      { name: "Разовое занятие", value: 150_000 },
-      { name: "Микс абонемент — 12 занятий (неограниченное количество направлений)", value: 1_300_000 },
-    ],
-    oneDirection: [
-      { name: "12 месяцев (1 направление) — бесплатная заморозка 4 недели", value: 7_740_000, monthly: 645_000, months: 12 },
-      { name: "6 месяцев (1 направление) — бесплатная заморозка 2 недели", value: 4_480_000, monthly: 745_000, months: 6 },
-      { name: "3 месяца (1 направление) — бесплатная заморозка 1 неделя", value: 2_535_000, monthly: 845_000, months: 3 },
-    ],
-  };
-
-  /* ===== РАСПИСАНИЕ ===== */
-  const scheduleAly = {
-    "ЗАЛ №1": {
-      "ПОНЕДЕЛЬНИК": ["09:30–10:45 — Йога", "11:00–12:15 — Йога", "16:00–17:15 — Йогатерапия", "17:45–19:00 — Аэройога"],
-      "ВТОРНИК": [
-        "08:30–09:45 — Женская йога",
-        "10:00–11:00 — Йога для беременных",
-        "11:15–12:15 — Йога для беременных",
-        "15:00–16:00 — Тверк",
-        "16:00–17:00 — Тверк",
-        "18:00–19:00 — Пилатес + Стретчинг",
-        "19:00–20:00 — Аэростретчинг",
-      ],
-      "СРЕДА": ["09:30–10:45 — Йога", "11:00–12:15 — Йога", "16:00–17:15 — Йогатерапия", "17:45–19:00 — Женское здоровье", "19:00–20:00 — Аэройога"],
-      "ЧЕТВЕРГ": [
-        "08:30–09:45 — Женская йога",
-        "10:00–11:00 — Йога для беременных",
-        "11:15–12:15 — Йога для беременных",
-        "15:00–16:00 — Тверк",
-        "16:00–17:00 — Тверк",
-        "18:00–19:00 — Пилатес + стретчинг",
-        "19:00–20:00 — Аэростретчинг",
-      ],
-      "ПЯТНИЦА": ["09:30–10:45 — Йога", "11:00–12:15 — Йога", "16:00–17:15 — Йогатерапия", "17:45–19:00 — Женское здоровье", "19:00–20:00 — Аэройога"],
-      "СУББОТА": ["08:30–09:45 — Женская йога", "11:15–12:15 — Йога для беременных", "15:00–16:00 — Тверк", "16:00–17:00 — Тверк"],
-    },
-    "ЗАЛ №2": {
-      "ПОНЕДЕЛЬНИК": [
-        "08:00–09:00 — Фитнес + Стретчинг",
-        "09:00–10:00 — Фитнес + Стретчинг",
-        "10:45–11:45 — Фитнес + Пилатес",
-        "12:00–13:00 — Пилатес (50+)",
-        "15:00–16:00 — Узбекские танцы",
-        "16:00–17:00 — Зумба + Стретчинг",
-        "17:00–18:00 — Арабские танцы + Фитнес",
-        "18:00–19:00 — K-POP",
-        "19:00–20:00 — Фитнес + Пилатес",
-        "20:00–21:00 — Пилатес",
-      ],
-      "ВТОРНИК": ["09:00–10:00 — Фитнес микс", "10:00–11:00 — Фитнес микс", "19:00–20:00 — Фитнес микс", "20:00–21:00 — Фитнес + пилатес"],
-      "СРЕДА": [
-        "08:00–09:00 — Фитнес + стретчинг",
-        "09:00–10:00 — Фитнес + стретчинг",
-        "10:45–11:45 — Фитнес + пилатес",
-        "12:00–13:00 — Пилатес (50+)",
-        "15:00–16:00 — Узбекские танцы",
-        "16:00–17:00 — Зумба + стретчинг",
-        "17:00–18:00 — Арабские танцы + фитнес",
-        "18:00–19:00 — K-pop",
-        "19:00–20:00 — Фитнес + Пилатес",
-        "20:00–21:00 — Пилатес",
-      ],
-      "ЧЕТВЕРГ": ["09:00–10:00 — Фитнес микс", "10:00–11:00 — Фитнес микс", "19:00–20:00 — Фитнес микс", "20:00–21:00 — Фитнес + пилатес"],
-      "ПЯТНИЦА": [
-        "08:00–09:00 — Фитнес + стретчинг",
-        "09:00–10:00 — Фитнес + стретчинг",
-        "10:45–11:45 — Фитнес + пилатес",
-        "12:00–13:00 — Пилатес (50+)",
-        "15:00–16:00 — Узбекские танцы",
-        "16:00–17:00 — Зумба + стретчинг",
-        "17:00–18:00 — Арабские танцы + фитнес",
-        "18:00–19:00 — K-pop",
-        "19:00–20:00 — Фитнес + Пилатес",
-        "20:00–21:00 — Пилатес",
-      ],
-      "СУББОТА": ["09:00–10:00 — Фитнес микс", "10:00–11:00 — Фитнес микс", "19:00–20:00 — Фитнес микс", "20:00–21:00 — Фитнес + пилатес"],
-    },
-  };
+  // Единый источник данных — страница студии (src/data/studiosPageData.js)
+  const { fitness } = studiosPageData["st-aly"].pricing;
+  const schedule = studiosPageData["st-aly"].schedule;
 
   return (
     <>
@@ -189,33 +104,28 @@ export default function PricesPage() {
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="bg-white rounded-2xl p-5 shadow-soft">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Тренировки (08:00–19:00)</h3>
-            {alai.training_08_19.map((i) => <PriceRow key={i.name} {...i} />)}
+            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Тренировки</h3>
+            {fitness.training.map((i) => <PriceRow key={i.name} {...i} />)}
           </div>
 
           <div className="bg-white rounded-2xl p-5 shadow-soft">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Тренировки (19:00–21:00)</h3>
-            {alai.training_19_21.map((i) => <PriceRow key={i.name} {...i} />)}
+            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Аэройога / Аэростретчинг / Тверк / Йога для беременных</h3>
+            {fitness.specials.map((i) => <PriceRow key={i.name} {...i} />)}
           </div>
 
           <div className="bg-white rounded-2xl p-5 shadow-soft">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Аэройога / Аэростретчинг / Йога для беременных</h3>
-            {alai.specials.map((i) => <PriceRow key={i.name} {...i} />)}
+            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">K-pop</h3>
+            {fitness.kpop.map((i) => <PriceRow key={i.name} {...i} />)}
           </div>
 
           <div className="bg-white rounded-2xl p-5 shadow-soft">
-            <h3 className="font-бебas text-[22px] md:text-[26px] mb-2">K-pop</h3>
-            {alai.kpop.map((i) => <PriceRow key={i.name} {...i} />)}
-          </div>
-
-          <div className="bg-white rounded-2xl p-5 shadow-soft md:col-span-2">
             <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Дополнительно</h3>
-            {alai.extras.map((i) => <PriceRow key={i.name} {...i} />)}
+            {fitness.extras.map((i) => <PriceRow key={i.name} {...i} />)}
           </div>
 
           <div className="bg-white rounded-2xl p-5 shadow-soft md:col-span-2">
-            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">Абонементы на 1 направление</h3>
-            {alai.oneDirection.map((i) => <PriceRow key={i.name} {...i} />)}
+            <h3 className="font-bebas text-[22px] md:text-[26px] mb-2">VIP абонементы</h3>
+            {fitness.vip.map((i) => <PriceRow key={i.name} {...i} />)}
           </div>
         </div>
       </Section>
@@ -224,8 +134,8 @@ export default function PricesPage() {
       <Section id="alaiskiy-schedule" className="bg-paper">
         <h2 className="font-bebas text-[26px] md:text-[34px] text-[#161A1D] leading-tight mb-4">Расписание студии «Алайский»</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          <ScheduleBlock title="ЗАЛ №1" scheduleObj={scheduleAly["ЗАЛ №1"]} />
-          <ScheduleBlock title="ЗАЛ №2" scheduleObj={scheduleAly["ЗАЛ №2"]} />
+          <ScheduleBlock title="ЗАЛ №1" scheduleObj={schedule["ЗАЛ №1"]} />
+          <ScheduleBlock title="ЗАЛ №2" scheduleObj={schedule["ЗАЛ №2"]} />
         </div>
       </Section>
     </>

@@ -20,17 +20,15 @@ export const aboutData = {
     { name: "Гульзия", role: "Тренер по йоге", photo: "/images/about/team-placeholder.svg" },
     { name: "Валентина", role: "Тренер по йоге", photo: "/images/about/team-placeholder.svg" },
     { name: "Фарангиз", role: "Тренер по фитнесу, стретчингу и джампинг фитнесу", photo: "/images/about/team-15.jpg" },
-    { name: "Наргиза", role: "Тренер по фитнесу", photo: "/images/about/team-16.jpg" },
+    { name: "Евгения", role: "Тренер по арабским танцам", photo: "/images/about/team-placeholder.svg" },
 
     // === МАССАЖИСТЫ ===
     { name: "Малика", role: "Массажист", photo: "/images/about/team-5.jpg" },
     { name: "Малика", role: "Массажист", photo: "/images/about/team-9.jpg" },
-    { name: "Юлия", role: "Массажист", photo: "/images/about/team-july.jpg" },
     { name: "Феруза", role: "Массажист", photo: "/images/about/team-14.jpg" },
+    { name: "Ирина", role: "Массажист", photo: "/images/about/team-placeholder.svg" },
 
     // === АДМИНИСТРАТОРЫ ===
-    { name: "Лилия", role: "Администратор", photo: "/images/about/team-8.jpg" },
-    { name: "Радмила", role: "Администратор", photo: "/images/about/team-17.jpg" },
     { name: "Вилена", role: "Администратор", photo: "/images/about/team-placeholder.svg" },
     { name: "Нигина", role: "Администратор", photo: "/images/about/team-nigina.jpg" },
   ],
