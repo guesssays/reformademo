@@ -131,48 +131,6 @@ export const directionsData = [
     }
   },
   {
-    slug: "trampoline-fitness",
-    title: "Фитнес на батутах",
-    tag: "MOVEMENT",
-    hero: {
-      image: "/images/directions/trampoline/hero.jpg",
-      title: "Фитнес на батутах",
-      subtitle: "Прыгучий кардио-формат с минимальной ударной нагрузкой",
-      ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
-      ctaHref: "tel:+998933775697"
-    },
-    intro: {
-      imageLeft: "/images/directions/trampoline/intro.jpg",
-      title: "Мягкое кардио и море позитива",
-      text: "Тренировка улучшает лимфодренаж, координацию и настроение."
-    },
-    benefitsBlock: {
-      title: "Основные преимущества Фитнес на батутах",
-      items: [
-        { title: "Щадящая нагрузка", text: "Мягкая амортизация батутов." },
-        { title: "Координация", text: "Баланс и чувство ритма." },
-        { title: "Калории", text: "Расход до 1000 калорий в час." },
-        { title: "Антистресс", text: "Весело и бодро." }
-      ]
-    },
-    prepareSteps: [
-      { n: 1, title: "Обувь", text: "Плотно фиксирующая стопу." },
-      { n: 2, title: "Разминка", text: "Приходите заранее." },
-      { n: 3, title: "Вода", text: "Пейте до и после." }
-    ],
-    studios: ["st-aly"],
-    gallery: [
-      "/images/directions/trampoline/g1.jpg",
-      "/images/directions/trampoline/g2.jpg",
-      "/images/directions/trampoline/g3.jpg"
-    ],
-    seo: {
-      title: "Фитнес на батутах в ReForma",
-      description: "Мягкое кардио и драйв. Записывайтесь на пробный класс.",
-      keywords: "батутный фитнес, кардио для девушек"
-    }
-  },
-  {
     slug: "k-pop",
     title: "K-pop",
     tag: "MOVEMENT",
