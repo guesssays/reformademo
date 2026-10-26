@@ -14,13 +14,13 @@ export const aboutData = {
   // Порядок: СНАЧАЛА ТРЕНЕРЫ → затем МАССАЖИСТЫ → затем АДМИНИСТРАТОРЫ
   team: [
     // === ТРЕНЕРЫ ===
-    { name: "Карима", role: "Тренер по йоге и йога-терапии", photo: "/images/about/team-placeholder.svg" },
+    { name: "Карима", role: "Тренер по йоге и йога-терапии", photo: "/images/about/team-karima.jpg" },
     { name: "Камила", role: "Тренер по стретчингу, пилатесу, тверку и аэростретчингу", photo: "/images/about/team-4.jpg" },
     { name: "Марина", role: "Тренер по фитнесу и пилатесу", photo: "/images/about/team-11.jpg" },
     { name: "Гульзия", role: "Тренер по йоге", photo: "/images/about/team-placeholder.svg" },
-    { name: "Валентина", role: "Тренер по йоге", photo: "/images/about/team-placeholder.svg" },
+    { name: "Валентина", role: "Тренер по йоге", photo: "/images/about/team-valentina.jpg" },
     { name: "Фарангиз", role: "Тренер по фитнесу, стретчингу и джампинг фитнесу", photo: "/images/about/team-15.jpg" },
-    { name: "Евгения", role: "Тренер по арабским танцам", photo: "/images/about/team-placeholder.svg" },
+    { name: "Евгения", role: "Тренер по арабским танцам", photo: "/images/about/team-evgenia.jpg" },
 
     // === МАССАЖИСТЫ ===
     { name: "Малика", role: "Массажист", photo: "/images/about/team-5.jpg" },
@@ -29,7 +29,7 @@ export const aboutData = {
     { name: "Ирина", role: "Массажист", photo: "/images/about/team-placeholder.svg" },
 
     // === АДМИНИСТРАТОРЫ ===
-    { name: "Вилена", role: "Администратор", photo: "/images/about/team-placeholder.svg" },
+    { name: "Вилена", role: "Администратор", photo: "/images/about/team-vilena.jpg" },
     { name: "Нигина", role: "Администратор", photo: "/images/about/team-nigina.jpg" },
   ],
 };
