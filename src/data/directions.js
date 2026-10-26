@@ -46,49 +46,6 @@ export const directionsData = [
 
   // ==================== MOVEMENT ====================
   {
-    slug: "fitness-mix",
-    title: "Фитнес микс",
-    tag: "MOVEMENT",
-    hero: {
-      image: "/images/directions/fitness-mix/hero.jpg",
-      title: "Фитнес микс",
-      subtitle: "Силовые и кардио-блоки в одном формате для общего тонуса",
-      ctaText: "ЗАПИСАТЬСЯ НА ПРОБНОЕ ЗАНЯТИЕ",
-      ctaHref: "tel:+998933775697"
-    },
-    intro: {
-      imageLeft: "/images/directions/fitness-mix/intro.jpg",
-      title: "Сбалансированная тренировка на всё тело",
-      text: "Комбинируем силовые упражнения, функциональные связки и кардио. Подходит для любого уровня."
-    },
-    benefitsBlock: {
-      title: "Основные преимущества Фитнес микс",
-      items: [
-        { title: "Общий тонус", text: "Повышает выносливость и силу." },
-        { title: "Сжигание калорий", text: "Интенсивные блоки ускоряют метаболизм." },
-        { title: "Разнообразие", text: "Каждая тренировка уникальна." },
-        { title: "Подходит всем", text: "Лёгкая регрессия и прогрессия нагрузки." }
-      ]
-    },
-    prepareSteps: [
-      { n: 1, title: "Уровень", text: "Lite/Basic/Pro — подберём группу." },
-      { n: 2, title: "Обувь", text: "Кроссовки с фиксацией стопы." },
-      { n: 3, title: "Вода", text: "Бутылка воды и полотенце." }
-    ],
-    studios: ["st-aly"],
-    gallery: [
-      "/images/directions/fitness-mix/g1.jpg",
-      "/images/directions/fitness-mix/g2.jpg",
-      "/images/directions/fitness-mix/g3.jpg"
-    ],
-    seo: {
-      title: "Фитнес микс в ReForma",
-      description: "Силовые и кардио блоки для здоровья и фигуры. Пробное занятие — звоните!",
-      keywords: "фитнес микс ташкент, функциональные тренировки"
-    }
-  },
-  
-  {
     slug: "twerk",
     title: "Тверк",
     tag: "MOVEMENT",

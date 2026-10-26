@@ -66,6 +66,16 @@ export default function AboutPage() {
               <figcaption className="p-3">
                 <div className="font-bebas text-white text-xl leading-none">{p.name}</div>
                 <div className="text-white/80 font-helvCond text-lg">{p.role}</div>
+                {p.bio?.length ? (
+                  <ul className="mt-2 space-y-1">
+                    {p.bio.map((line) => (
+                      <li key={line} className="flex gap-2 text-white/65 font-helvCond text-[15px] leading-snug">
+                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-scarlet" />
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </figcaption>
             </figure>
           ))}

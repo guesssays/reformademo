@@ -52,7 +52,6 @@ export const why = [
 
 export const directions = [
   // MOVEMENT
-  { slug: "fitness-mix",          tag: "MOVEMENT", title: "Фитнес микс",             img: "/images/directions/fitness-mix.png" },
   { slug: "twerk",                tag: "MOVEMENT", title: "Тверк",                    img: "/images/directions/twerk.png" },
   { slug: "k-pop",                tag: "MOVEMENT", title: "K-pop",                    img: "/images/directions/kpop.png" },
   { slug: "arabic-dance",         tag: "MOVEMENT", title: "Арабские танцы",           img: "/images/directions/arabic-dance-fitness.png" },
